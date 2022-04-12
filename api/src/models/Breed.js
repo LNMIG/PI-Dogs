@@ -5,8 +5,7 @@ module.exports = sequelize => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoincrement: true,
-      allowNull: false
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -24,8 +23,5 @@ module.exports = sequelize => {
     life_span: {
         type: DataTypes.STRING,
       },
-  }, {
-    initialAutoIncrement: 1000,
-    //freezeTableName: true
   });
 }
