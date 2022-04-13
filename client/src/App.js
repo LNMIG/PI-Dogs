@@ -6,7 +6,7 @@ import Home from "./components/Home/Home";
 function App() {
   return (
     <React.Fragment>
-      <Route exact path='/home' component={Home} />
+      <Route exact path='/' component={Home} />
     </React.Fragment>
   );
 }
