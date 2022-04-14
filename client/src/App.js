@@ -2,11 +2,13 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import Home from "./components/Home/Home";
+import BreedDetail from "./components/BreedDetail/BreedDetail";
 
 function App() {
   return (
     <React.Fragment>
       <Route exact path='/' component={Home} />
+      <Route path='/dogs/:idBreed' component={BreedDetail} />
     </React.Fragment>
   );
 }
