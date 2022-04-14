@@ -1,10 +1,10 @@
+require('dotenv').config();
 const router = require('express').Router();
 const fetch = require ('node-fetch');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 const { Breed, Temper } = require('../db.js');
-
-
+const { API_KEY } = process.env;
 
 router.get('/', async function(req, res, next){
 
@@ -18,7 +18,7 @@ router.get('/', async function(req, res, next){
             //const dataBreedsAPI = await allBreedsAPI.json(); 
             
             const allBreedsDB = await Breed.findAll({ include: Temper });
-            const allBreedsAPI = await fetch ('https://api.thedogapi.com/v1/breeds').then(result => result.json());
+            const allBreedsAPI = await fetch (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`).then(result => result.json());
             
             let filtBreedsDB =[], filtBreedsAPI = [];
             
@@ -43,7 +43,7 @@ router.get('/', async function(req, res, next){
                 where: { name: { [Op.substring]: name, } },
                 include: Temper  
             });
-            const oneBreedAPI = await fetch (`https://api.thedogapi.com/v1/breeds/search?q=${name}`).then(result => result.json());
+            const oneBreedAPI = await fetch (`https://api.thedogapi.com/v1/breeds/search?q=${name}&api_key=${API_KEY}`).then(result => result.json());
 
             let filtBreedDB =[], filtBreedAPI = [];
 
@@ -67,32 +67,33 @@ router.get('/', async function(req, res, next){
 
 // --------------- PARA  get /dogs/{idRaza} ----------
 router.get('/:idBreed', async function(req, res, next){
+
     try {
         const { idBreed } = req.params;
-        console.log(idBreed)
+        //console.log(idBreed)
         const idBreedDB = await Breed.findAll({
             where: { id: idBreed },
             include: Temper  
         });
-        console.log(idBreedDB)
-        const allBreedsAPI = await fetch (`https://api.thedogapi.com/v1/breeds`).then(result => result.json());
+        //console.log(idBreedDB)
+        const allBreedsAPI = await fetch (`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`).then(result => result.json());
         const idBreedAPI = allBreedsAPI.filter(breed => breed.id === parseInt(idBreed));
-        console.log(idBreedAPI)
+        //console.log(idBreedAPI)
         let finalResult= [];
         if (idBreedDB.length === 0 && idBreedAPI.length === 0) return res.status(404).send('Lo sentimos, no existe información de la raza solicitada'); 
         
         if (idBreedDB.length > 0) { 
             let {name, weight, height, tempers, life_span} = idBreedDB[0];
             finalResult.push({name, weight, height, life_span, temperament: tempers[0].name});
-            return res.json(finalResult);
+            return res.json(...finalResult);
         } else {
             let {name, weight, height, temperament, life_span, image} = idBreedAPI[0];
             finalResult.push({name, weight: weight.metric, height: height.metric, life_span, temperament, image:image.url});
-            return res.json(finalResult);
+            return res.json(...finalResult);
         }
     } catch (error) {
           next (error)
     }
-  });
+});
 
 module.exports = router;
