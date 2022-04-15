@@ -55,62 +55,226 @@
   letter-spacing: 4px;
   cursor: pointer;
 }
-.container {
+.backdetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../assets/puppies_01.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 97vh;
+}
+.backdetail .stripe {
+  background-color: rgba(224, 224, 224, 0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+  color: #54447b;
+  font-size: 3rem;
+  font-family: 'Poor Richard';
+  word-spacing: 1rem;
+}
+.backdetail .image {
+  width: 3rem;
+  margin-left: 3.125rem;
+  margin-right: 3.125rem;
+}
+.backdetail .container {
   background-color: #e7e7e1;
-  border-top: 2px inset brown;
-  border-bottom: 2px inset brown;
-  border-right: 5px inset #e7e7e1;
-  border-left: 5px outset #e7e7e1;
-  border-radius: 20px;
+  border-top: 0.125rem inset brown;
+  border-bottom: 0.125rem inset brown;
+  border-right: 0.3125rem inset #e7e7e1;
+  border-left: 0.3125rem outset #e7e7e1;
+  border-radius: 1.25rem;
   padding: 0px;
-  width: 200px;
-  height: 300px;
+  width: 30%;
+  height: 35rem;
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+.backdetail .container .missinginfo {
   margin-top: auto;
   margin-bottom: auto;
-  flex-direction: column;
+  color: red;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  font-family: 'Poor Richard';
+  text-align: center;
+  font-weight: bold;
 }
-.container .name {
-  margin-top: 0;
+.backdetail .container .name {
+  margin-top: 0rem;
   margin-bottom: 0rem;
   padding: 0rem;
   border-radius: 20px;
   width: 100%;
-  height: 50px;
+  height: fit-content;
+}
+.backdetail .container .name p {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
   color: #54447b;
-  font-size: 1.2rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   font-family: 'Poor Richard';
   text-align: center;
   font-weight: bold;
 }
-.container .image {
-  width: 100%;
+.backdetail .container .image {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  width: auto;
+  height: 15rem;
+  transform: scale(0.9);
   border-radius: 20px;
 }
-.container .data1 {
+.backdetail .container .data1 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
 }
-.container .data1 span {
+.backdetail .container .data1 .T {
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  height: fit-content;
+}
+.backdetail .container .data1 .D {
   font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
-  height: 40px;
-  margin-bottom: 0.1rem;
+  height: fit-content;
 }
-.container .data2 {
+.backdetail .container .data2 {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
 }
-.container .data2 span {
-  margin-left: 0.4rem;
-  height: 1.5625rem;
+.backdetail .container .data2 .L {
+  width: 50%;
+  padding: 0.25rem;
+  text-align: end;
+  margin-right: 1rem;
+  height: fit-content;
+}
+.backdetail .container .data2 .R {
+  width: 50%;
+  text-align: start;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  height: fit-content;
+}
+.backdetail .tryus {
+  width: 30%;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #54447b;
+  font-size: 1rem;
+  font-weight: bolder;
+  font-family: 'Poor Richard';
+  text-decoration: none;
+}
+.backdetail .tryus .btn {
+  width: 100%;
+  padding: 1rem 2rem 1rem 2rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  text-align: center;
+  background-color: #54447b;
+  border-radius: 1rem;
+}
+.backdetail .tryus .btn-link {
+  text-decoration: none;
+  color: white;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+.formcontainer {
+  border-right: 8px outset brown;
+  border-bottom: 8px outset brown;
+  border-top: 2px inset white;
+  border-left: 2px inset white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.575rem;
+  width: 80%;
+  height: 75%;
+}
+.formcontainer .divtag {
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+.formcontainer .L {
+  width: 40%;
+  padding: 0.25rem;
+  text-align: start;
+  margin-right: 0rem;
+}
+.formcontainer .R {
+  width: 50%;
+  padding: 0.25rem;
+  text-align: start;
+  margin-left: 0rem;
+  max-height: 10px;
+}
+.formcontainer p.danger {
+  color: red;
+  font-size: 0.625rem;
+  position: absolute;
+  top: 1.1rem;
+  left: 8.8rem;
+}
+.formcontainer input.danger {
+  border: 2px solid red;
+  background-color: yellow;
+}
+.formcontainer .simbol {
+  width: 12%;
+  padding: 0.25rem;
+  text-align: start;
+  margin-left: 0rem;
+  height: fit-content;
+}
+.formcontainer .send {
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.formcontainer .send .active {
+  width: 6rem;
+  border-radius: 0.5rem;
+  height: fit-content;
+  background-color: #54447b;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
 }

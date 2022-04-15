@@ -1,0 +1,73 @@
+.formcontainer {
+    border-right: 8px outset brown;
+    border-bottom: 8px outset brown;
+    border-top: 2px inset white;
+    border-left: 2px inset white;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.575rem;
+    width: 80%;
+    height: 75%;
+    .divtag {
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-bottom: 0.8rem;
+    }
+    .L {
+        width: 40%;
+        padding: 0.25rem;
+        text-align: start;
+        margin-right: 0rem;
+    }
+    .R {
+        width: 50%;
+        padding: 0.25rem;
+        text-align: start;
+        margin-left: 0rem;
+        // height: fit-content;
+        max-height: 10px;
+    }
+    p.danger {
+        color: red;
+        font-size: 0.625rem;
+        position: absolute;
+        top: 1.1rem;
+        left: 8.8rem;
+    }
+      
+    input.danger {
+        border: 2px solid red;
+        background-color: yellow;
+    }
+    .simbol {
+        width: 12%;
+        padding: 0.25rem;
+        text-align: start;
+        margin-left: 0rem;
+        height: fit-content;
+    }
+    .send {
+        width: 100%;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        .active {
+            width: 6rem;
+            border-radius: 0.5rem;
+            height: fit-content;
+            background-color: @landingtitlecolor;
+            font-size: 1rem;
+            color: white;
+            cursor:pointer;
+            
+        }
+    }
+}
