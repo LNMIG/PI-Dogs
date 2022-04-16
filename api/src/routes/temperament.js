@@ -20,7 +20,7 @@ router.get('/', async function(_req, res, next){
         //                todo a un string | minúsculas | a arreglo | saca esapcios extremos de c/temper | ordena array
         ordTempAPI = fiTempAPI.toString(',').toLowerCase().split(',').map(temper => {return temper.trim()}).sort().filter(temper => temper !=='');
         // creo objeto Temperaments no repetidos
-        console.log(ordTempAPI)
+        //console.log(ordTempAPI)
         setTempAPI = new Set(ordTempAPI);
         // genero un Array usando el objeto y paso a mayúsculas la primer letra de cada elemento
         ordTempAPI = Array.from(setTempAPI).map(t => {return t[0].toUpperCase() + t.slice(1)});

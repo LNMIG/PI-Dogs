@@ -6,25 +6,42 @@ const { Breed, Temper } = require('../db.js');
 
 router.post('/', async function(req, res, next){
     try {
-        const {name, height, weight, life_span, temperaments} = req.body;
+        const {name, height, weight, life_span, image, temperaments} = req.body;
+        let newTemperaments = [];
+        console.log(temperaments)
+        
+        if(!Array.isArray(temperaments)) {
+            newTemperaments = temperaments.split(',').map(temper => {return temper.trim()}).sort().filter(temper => temper !=='');
+        } else {
+            newTemperaments = temperaments;
+        }
+        console.log(newTemperaments)
+        console.log(temperaments)
         const [breed, createdB] = await Breed.findOrCreate({ 
             where: {
                 name,
                 height,
                 weight,
                 life_span,
+                image,
             }
         });
-        await breed.increment({ 'id': 1000 });
-        const [temper, createdT] = await Temper.findOrCreate({ 
-            where: {
-                name: temperaments,
-            }
-        });
+        console.log(createdB)
+        // console.log(breed)
+        createdB ? await breed.increment({ 'id': 1000 }) : null;
+        
+        for (let i=0; i<newTemperaments.length; i++) {
+            const [temper, createdT] = await Temper.findOrCreate({ 
+                where: {
+                    name: newTemperaments[i],
+                }
+            });
+            await breed.addTempers(temper);
+        }
 
-        await breed.addTempers(temper);
-
-        res.status(201).json('Nueva raza creada con éxito');
+        
+        createdB    ? res.status(201).json({newBreed: 'New breed added to database!'})
+                    : res.status(201).json({newBreed: 'Sorry, new breed not added. There is already a breed matching yours', data: breed});
         
     } catch (error) {
         next(error);
