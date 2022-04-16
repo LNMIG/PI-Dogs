@@ -65,16 +65,24 @@ class BreedDetail extends React.Component {
                 <p>{breedDetail.name}</p>
               </div>
 
-              <div >
-                {breedDetail.image 
-                ? <img className="image" src={breedDetail.image} alt="BI"/>
-                : <img className="image" src={missing} alt="BI"/> }
+              <div>
+                {breedDetail.image === 'none'
+                ? <img className="image" src={missing} alt="BI"/>
+                : <img className="image" src={breedDetail.image} alt="BI"/>
+                }
               </div>
-                
-              <div className="data1">
-                <span className='T'>Temperaments</span>
-                <span className='D'>{breedDetail.temperament}</span>
-              </div>
+
+              {breedDetail.temperament === 'none'
+              ? <div className="data1">
+                  <span className='T'>Temperaments</span>
+                  <span className='D'>It seems there is no temperament available for this breed</span>
+                </div>
+              : <div className="data1">
+                  <span className='T'>Temperaments</span>
+                  <span className='D'>{breedDetail.temperament}</span>
+                </div>
+              }
+              
               <div className="data2">
                 <span className='L'>Height:</span>
                 <span className='R'>{breedDetail.height} (cm)</span>

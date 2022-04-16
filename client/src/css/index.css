@@ -64,6 +64,7 @@
   background-size: cover;
   width: 100%;
   height: 97vh;
+  position: relative;
 }
 .backdetail .stripe {
   background-color: rgba(224, 224, 224, 0.6);
@@ -82,6 +83,46 @@
   width: 3rem;
   margin-left: 3.125rem;
   margin-right: 3.125rem;
+}
+.backdetail .created {
+  width: 18rem;
+  padding: 1rem;
+  background-color: #e7e7e1;
+  border-top: 0.25rem outset green;
+  border-bottom: 0.25rem inset green;
+  border-right: 0.3125rem inset #e7e7e1;
+  border-left: 0.3125rem outset #e7e7e1;
+  border-radius: 1.25rem;
+  color: green;
+  font-weight: 600;
+  text-align: center;
+  position: absolute;
+  right: 6rem;
+  top: 30.5rem;
+}
+.backdetail .notcreated {
+  width: 18rem;
+  padding: 1rem;
+  background-color: #e7e7e1;
+  border-top: 0.25rem outset red;
+  border-bottom: 0.25rem inset red;
+  border-right: 0.3125rem inset #e7e7e1;
+  border-left: 0.3125rem outset #e7e7e1;
+  border-radius: 1.25rem;
+  color: red;
+  font-weight: 600;
+  text-align: center;
+  position: absolute;
+  right: 8rem;
+  top: 30.5rem;
+}
+.backdetail .close {
+  border: 0.25rem outset red;
+  padding: 0rem;
+  width: 2rem;
+  position: absolute;
+  right: -2rem;
+  top: 0rem;
 }
 .backdetail .container {
   background-color: #e7e7e1;
@@ -221,7 +262,7 @@
   height: 75%;
 }
 .formcontainer .divtag {
-  height: 2rem;
+  height: 1.8rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -237,17 +278,24 @@
 }
 .formcontainer .R {
   width: 50%;
-  padding: 0.25rem;
+  padding: 0.2rem;
   text-align: start;
   margin-left: 0rem;
   max-height: 10px;
+}
+.formcontainer .S {
+  width: 100%;
+  height: 1.4rem;
+  padding: 0rem;
+  margin: 0rem;
+  margin-bottom: 0rem;
 }
 .formcontainer p.danger {
   color: red;
   font-size: 0.625rem;
   position: absolute;
   top: 1.1rem;
-  left: 8.8rem;
+  left: 9.3rem;
 }
 .formcontainer input.danger {
   border: 2px solid red;
@@ -263,7 +311,7 @@
 .formcontainer .send {
   width: 100%;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

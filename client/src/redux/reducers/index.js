@@ -1,5 +1,7 @@
 const initialState = {
-        breedsDetail: {}
+        breedsDetail: {},
+        breedCreated:{},
+        temperslist:[]
 }
 
 function rootReducer (state = initialState, action) {
@@ -19,11 +21,19 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 breedsDetail: action.payload
             }
-// case "REMOVE_MOVIE_FAVORITE":
-// return {
-// ...state,
-// moviesFavorities: state.moviesFavorities.filter((movie) => movie.imdbID !== action.payload)
-// }
+
+        case "POST_NEW_BREED":
+            return {
+                ...state,
+                breedCreated: action.payload
+            }
+
+        case "GET_TEMPERS_LIST":
+            return {
+                ...state,
+                temperslist: action.payload
+            }
+
     default:
         return state;
     }
