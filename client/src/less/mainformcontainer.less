@@ -1,0 +1,155 @@
+.Main-Form-Container {
+    width: 30%;
+    height: 37.5rem;
+    position: relative;
+
+    .container {
+        background-color: #e7e7e1;
+        border-top: 0.125rem inset brown;
+        border-bottom: 0.125rem inset brown;
+        border-right: 0.3125rem inset #e7e7e1;
+        border-left: 0.3125rem outset #e7e7e1;
+        border-radius: 1.25rem;
+        padding: 0px;
+        width: 100%;
+        height: 32rem;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        flex-direction: column;
+        align-items: center;
+        .name {
+            margin-top: 0rem;
+            margin-bottom: 0rem;
+            padding: 0rem;
+            border-radius: 20px;
+            width: 100%;
+            height: fit-content;
+            p {
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                color: #54447b;
+                font-size: 2rem;
+                letter-spacing: 1px;
+                font-family: 'Poor Richard';
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+        .inputcontainer {
+            border-right: 8px outset brown;
+            border-bottom: 8px outset brown;
+            border-top: 2px inset white;
+            border-left: 2px inset white;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.575rem;
+            width: 80%;
+            height: 80%;
+            position: relative;
+            .divtag {
+                height: 1.8rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                margin-bottom: 0.8rem;
+               .L {
+                    width: 40%;
+                    padding: 0.25rem;
+                    text-align: start;
+                    margin-right: 0rem;
+                }
+                .R {
+                    width: 50%;
+                    padding: 0.2rem;
+                    text-align: start;
+                    margin-left: 0rem;
+                    // height: fit-content;
+                    max-height: 10px;
+                }
+                input.danger {
+                    border: 2px solid red;
+                    background-color: yellow;
+                }
+                p.danger {
+                    color: red;
+                    font-size: 0.625rem;
+                    position: absolute;
+                    top: 1.1rem;
+                    left: 9.3rem;
+                }
+                .simbol {
+                    width: 12%;
+                    padding: 0.25rem;
+                    text-align: start;
+                    margin-left: 0rem;
+                    height: fit-content;
+                }
+            }
+            .S {
+                width: 100%;
+                height: 1.4rem;
+                padding: 0rem;
+                margin: 0rem;
+                margin-bottom: 0rem;
+            }
+            .send {
+                width: 100%;
+                margin-bottom: 0.5rem;
+                margin-top: 2.5rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                position: absolute;
+                bottom: 0rem;
+                .active {
+                    width: 6rem;
+                    border-radius: 0.5rem;
+                    height: fit-content;
+                    background-color: @landingtitlecolor;
+                    font-size: 1rem;
+                    color: white;
+                    cursor:pointer;
+                }
+            }
+            .created {
+                width: 18rem;
+                padding: 1rem;
+                background-color: rgb(231, 231, 225);
+                border-top: 0.25rem outset green;
+                border-bottom: 0.25rem inset green;
+                border-right: 0.3125rem inset rgb(231, 231, 225);
+                border-left: 0.3125rem outset rgb(231, 231, 225);
+                border-radius: 1.25rem;
+                color: green;
+                font-weight: 600;
+                text-align: center;
+                position: absolute;
+                right: 6rem;
+                top: 30.5rem;
+            }
+            .notcreated {
+                width: 18rem;
+                padding: 1rem;
+                background-color: rgb(231, 231, 225);
+                border-top: 0.25rem outset red;
+                border-bottom: 0.25rem inset red;
+                border-right: 0.3125rem inset rgb(231, 231, 225);
+                border-left: 0.3125rem outset rgb(231, 231, 225);
+                border-radius: 1.25rem;
+                color: red;
+                font-weight: 600;
+                text-align: center;
+                position: absolute;
+                right: 8rem;
+                top: 30.5rem;
+            }
+        }
+    }
+}

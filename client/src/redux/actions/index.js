@@ -1,13 +1,12 @@
-
-export const getBreedDetail = (idBreed) => {
+export const getAllBreeds = () => {
     return async function (dispatch) {
         try {
-        const r = await fetch(`http://localhost:3001/dogs/${idBreed}`);
-        const json = await r.json();
-        dispatch({ type: "GET_BREED_DETAIL", payload: json });
+            const r = await fetch(`http://localhost:3001/dogs`);
+            const json = await r.json();
+            return dispatch({ type: "GET_ALL_BREEDS", payload: json });
         } catch (e) {
-            return console.log(e);
-        } 
+            return console.log('Error in GET ALL BREEDS:', e);
+        }
     }
 };
 
@@ -17,10 +16,23 @@ export const postNewBreed = (formData) => {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {'Content-Type': 'application/json' }
-        }).then(r => r.json()).then(json => dispatch({ type: "POST_NEW_BREED", payload: json})).catch(e => console.log('Error:', e))
+        }).then(r => r.json())
+          .then(json => dispatch({ type: "POST_NEW_BREED", payload: json}))
+          .catch(e => console.log('Error in POST NEW BREED:', e))
     }
 };
 
+export const getBreedDetail = (idBreed) => {
+    return async function (dispatch) {
+        try {
+        const r = await fetch(`http://localhost:3001/dogs/${idBreed}`);
+        const json = await r.json();
+        dispatch({ type: "GET_BREED_DETAIL", payload: json });
+        } catch (e) {
+            return console.log('Error in GET BREED DETAIL:', e);
+        } 
+    }
+};
 
 export const getTemperaments = () => {
     return async function (dispatch) {
@@ -29,7 +41,7 @@ export const getTemperaments = () => {
                 const json = await r.json();
                 return dispatch({ type: "GET_TEMPERS_LIST", payload: json });
             } catch (e) {
-                return console.log(e);
+                return console.log('Error in GET TEMPERAMENTS LIST',e);
             }
     }
 };

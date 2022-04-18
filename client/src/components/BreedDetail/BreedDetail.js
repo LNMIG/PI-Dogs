@@ -1,7 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { getBreedDetail } from '../../redux/actions';
+import Detailstripe from '../Commondetails/Detail-stripe.js';
+import Backhomebutton from '../Commondetails/BackhomeButton.js';
+import Missingtext from '../Commondetails/MissingText.js';
+import Breedname from '../Commondetails/BreedName.js';
+import Breedimage from '../Commondetails/BreedImage.js';
+import Breedtemper from '../Commondetails/BreedTemper.js';
+import Breedoutput from '../Commondetails/BreedOutput.js';
 import '../../css/index.css';
 import missing from '../../assets/missingdog.png';
 import footprint from '../../assets/footprintviolet.png';
@@ -14,117 +20,44 @@ class BreedDetail extends React.Component {
 
   render() {
     const {breedDetail} = this.props;
-    console.log(breedDetail)
     if (Object.entries(breedDetail).length === 0) {
+
       return (
-        <div className="backdetail">
-        {/*---------------------------------------------------*/}
-          <div className="stripe">
-            <img className="image" src={footprint} alt="BI"/>
-            puppies lovers
-            <img className="image" src={footprint} alt="BI"/>
+        <div className="Backdetail">
+          <Detailstripe src={footprint} className={"stripeTop"}/>
+          <div className='Main-Form-Container'>
+            <Missingtext missingtext={"There is not such breed you are looking for."}/>
+            <Backhomebutton />
           </div>
-        {/*---------------------------------------------------*/}
-          <div className="container">
-            <span className='missinginfo'>
-              There is not such breed you are looking for.
-            </span>
-          </div>
-        {/*---------------------------------------------------*/}
-          <div className="tryus" >
-            <div className="btn" >
-              <NavLink className="btn-link" exact to="/home" >BACK HOME</NavLink>
-            </div>
-          </div>
-  
-
-          <div className="stripe">
-            <img className="image" src={footprint} alt="BI"/>
-            puppies lovers
-            <img className="image" src={footprint} alt="BI"/>
-          </div>
+          <Detailstripe src={footprint} className={"stripeBottom"}/>
         </div>
-
-
       );
 
     } else {
 
       return (
-        <div className="backdetail">
-        {/*---------------------------------------------------*/}
-          <div className="stripe">
-            <img className="image" src={footprint} alt="BI"/>
-            puppies lovers
-            <img className="image" src={footprint} alt="BI"/>
+        <div className="Backdetail">
+          <Detailstripe src={footprint} className={"stripeTop"}/>
+          <div className='Main-Form-Container'>
+            <div className="Existinginfo">
+                <Breedname breedname={breedDetail.name} className={'name'}/>
+                <Breedimage breedimage={breedDetail.image} missing={missing} className={'image'}/>
+                <Breedtemper breedtemperament={breedDetail.temperament} className={['data1','T','D']} innerText={'Temperament'}/>
+                <Breedoutput breedoutinnerText={"Height:"} breedoutcharacteristic={breedDetail.height} label={"(cm)"} className={['data2','L','R']}/>
+                <Breedoutput breedoutinnerText={"Weight:"} breedoutcharacteristic={breedDetail.weight} label={"(Kg)"} className={['data2','L','R']}/>
+                <Breedoutput breedoutinnerText={"Estimated life span:"} breedoutcharacteristic={breedDetail.life_span} label={""} className={['data2','L','R']}/>
+            </div>
+            <Backhomebutton />
           </div>
-        {/*---------------------------------------------------*/}
-          <div className="container">
-
-              <div className="name">
-                <p>{breedDetail.name}</p>
-              </div>
-
-              <div>
-                {breedDetail.image === 'none'
-                ? <img className="image" src={missing} alt="BI"/>
-                : <img className="image" src={breedDetail.image} alt="BI"/>
-                }
-              </div>
-
-              {breedDetail.temperament === 'none'
-              ? <div className="data1">
-                  <span className='T'>Temperaments</span>
-                  <span className='D'>It seems there is no temperament available for this breed</span>
-                </div>
-              : <div className="data1">
-                  <span className='T'>Temperaments</span>
-                  <span className='D'>{breedDetail.temperament}</span>
-                </div>
-              }
-              
-              <div className="data2">
-                <span className='L'>Height:</span>
-                <span className='R'>{breedDetail.height} (cm)</span>
-              </div>
-              <div className="data2">
-                <span className='L'>Weight:</span>
-                <span className='R'>{breedDetail.weight} (Kg)</span>
-              </div>
-              <div className="data2">
-                <span className='L'>Life span:</span>
-                <span className='R'>{breedDetail.life_span}</span>
-              </div>
-                
-          </div>
-        {/*---------------------------------------------------*/}
-          <div className="tryus" >
-                
-              <div className="btn" >
-                <NavLink className="btn-link" exact to="/home" >BACK HOME</NavLink>
-              </div>
-                
-          </div>
-        {/*---------------------------------------------------*/}
-          <div className="stripe">
-            <img className="image" src={footprint} alt="BI"/>
-            puppies lovers
-            <img className="image" src={footprint} alt="BI"/>
-          </div>
+          <Detailstripe src={footprint} className={"stripeBottom"}/>
         </div>
       );
     }
   }
 }
 
-function mapStateToProps (state) {
-  return { breedDetail: state.breedsDetail };
-}
-
-function mapDispatchToProps (dispatch) {
-  return { getBreedsDetail: (idBreed) => dispatch(getBreedDetail(idBreed)) };
-}
-
+function mapStateToProps (state) { return { breedDetail: state.breedsDetail }; }
+function mapDispatchToProps (dispatch) { return { getBreedsDetail: (idBreed) => dispatch(getBreedDetail(idBreed)) }; }
 export default connect(mapStateToProps, mapDispatchToProps)(BreedDetail);
 
 

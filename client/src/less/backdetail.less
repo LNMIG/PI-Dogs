@@ -1,0 +1,62 @@
+.Backdetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //text-align: center;
+    background-image: url(@landingimage);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 97vh;
+    position: relative;
+    .stripeTop {
+        background-color: @backgroundquestioncolor;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        //text-align: center;
+        width: 100%;
+        height: 3rem;
+        color: @landingtitlecolor; 
+        font-size: 3rem;
+        font-family: @landingtitlefont;
+        word-spacing: 1rem;
+        top: 0rem;
+        left: 0rem;
+        right: 0rem;
+    }
+    .stripeBottom {
+        background-color: @backgroundquestioncolor;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        color: @landingtitlecolor; 
+        font-size: 3rem;
+        font-family: @landingtitlefont;
+        word-spacing: 1rem;
+        position: absolute;
+        bottom: 0rem;
+        left: 0rem;
+        right: 0rem;
+    }
+    .image {
+        width: 3rem;
+        margin-left: 3.125rem;
+        margin-right: 3.125rem;
+        //transform: scale(0.05);
+    }
+
+    
+    // .close {
+    //     border: 0.25rem outset red;
+    //     padding: 0rem;
+    //     width: 2rem;
+    //     position: absolute;
+    //     right: -2rem;
+    //     top: 0rem;
+    // }
+}
