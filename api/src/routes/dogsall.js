@@ -24,12 +24,12 @@ router.get('/', async function(req, res, next){
             
             allBreedsAPI.forEach(breed => {
                             let {id, name, weight, temperament, image} = breed;
-                            filtBreedsAPI.push({id, name, weight: weight.metric, temperament, imageUrl:image.url});
+                            filtBreedsAPI.push({id, name, weight: weight.metric, temperament, image:image.url});
             });
 
             allBreedsDB.forEach(breed => {
-                            let {id, name, weight, tempers} = breed;
-                            filtBreedsDB.push({id, name, weight, temperament: tempers[0].name});
+                            let {id, name, weight, tempers, image} = breed;
+                            filtBreedsDB.push({id, name, weight, temperament: tempers[0].name, image});
             });
 
             let finalResult = [...filtBreedsAPI, ...filtBreedsDB].sort((a,b) => {if (a.name < b.name) return -1});
@@ -48,12 +48,12 @@ router.get('/', async function(req, res, next){
             let filtBreedDB =[], filtBreedAPI = [];
 
             oneBreedAPI.forEach(breed => {
-                let {name, weight, height, life_span, temperament, reference_image_id} = breed;
-                filtBreedAPI.push({name, weight: weight.metric, height: height.metric, life_span, temperament, imageId: reference_image_id});
+                let {id, name, weight, temperament, reference_image_id} = breed;
+                filtBreedAPI.push({id, name, weight: weight.metric, temperament, image: `https://cdn2.thedogapi.com/images/${reference_image_id}.jpg`});
             });
             oneBreedDB.forEach(breed => {
-                let {name, weight, height, life_span} = breed;
-                filtBreedDB.push({name, weight, height, life_span});
+                let {id, name, weight, tempers, image} = breed;
+                filtBreedDB.push({id, name, weight, temperament: tempers[0].name, image});
             });
 
             let finalResult = [...filtBreedAPI, ...filtBreedDB].sort((a,b) => {if (a.name < b.name) {return  -1}});
@@ -83,8 +83,8 @@ router.get('/:idBreed', async function(req, res, next){
         if (idBreedDB.length === 0 && idBreedAPI.length === 0) return res.status(404).send('Lo sentimos, no existe información de la raza solicitada'); 
         
         if (idBreedDB.length > 0) { 
-            let {name, weight, height, tempers, life_span} = idBreedDB[0];
-            finalResult.push({name, weight, height, life_span, temperament: tempers[0].name});
+            let {name, weight, height, tempers, life_span, image} = idBreedDB[0];
+            finalResult.push({name, weight, height, life_span, temperament: tempers[0].name, image});
             return res.json(...finalResult);
         } else {
             let {name, weight, height, temperament, life_span, image} = idBreedAPI[0];
