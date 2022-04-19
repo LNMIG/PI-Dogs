@@ -34,7 +34,7 @@ router.get('/', async function(req, res, next){
 
             let finalResult = [...filtBreedsAPI, ...filtBreedsDB].sort((a,b) => {if (a.name < b.name) return -1});
         
-            res.json(finalResult);
+            finalResult.length > 0 ? res.status(201).json(finalResult) : res.status(404).json('Sorry, there is no breed');
 
         } else {
 
@@ -58,7 +58,7 @@ router.get('/', async function(req, res, next){
 
             let finalResult = [...filtBreedAPI, ...filtBreedDB].sort((a,b) => {if (a.name < b.name) {return  -1}});
 
-            finalResult.length > 0 ? res.json(finalResult) : res.status(404).send('Lo sentimos, no existe información de la raza solicitada');
+            finalResult.length > 0 ? res.status(201).json(finalResult) : res.status(404).json('Sorry, there is no breed matching your search');
         } 
     } catch (error) {
         next (error)
@@ -80,16 +80,16 @@ router.get('/:idBreed', async function(req, res, next){
         const idBreedAPI = allBreedsAPI.filter(breed => breed.id === parseInt(idBreed));
         //console.log(idBreedAPI)
         let finalResult= [];
-        if (idBreedDB.length === 0 && idBreedAPI.length === 0) return res.status(404).send('Lo sentimos, no existe información de la raza solicitada'); 
+        if (idBreedDB.length === 0 && idBreedAPI.length === 0) return res.status(404).send('Sorry, there is no breed matching your search'); 
         
         if (idBreedDB.length > 0) { 
             let {name, weight, height, tempers, life_span, image} = idBreedDB[0];
             finalResult.push({name, weight, height, life_span, temperament: tempers[0].name, image});
-            return res.json(...finalResult);
+            return res.status(201).json(...finalResult);
         } else {
             let {name, weight, height, temperament, life_span, image} = idBreedAPI[0];
             finalResult.push({name, weight: weight.metric, height: height.metric, life_span, temperament, image:image.url});
-            return res.json(...finalResult);
+            return res.status(201).json(...finalResult);
         }
     } catch (error) {
           next (error)
