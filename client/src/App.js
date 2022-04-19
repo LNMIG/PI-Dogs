@@ -11,7 +11,7 @@ function App() {
     <React.Fragment>
       <Route exact path='/' component={Landing} />
       <Route exact path='/home' component={Home} />
-      <Route path='/dogs/:idBreed' component={BreedDetail} />
+      <Route exact path='/dogs/:idBreed' component={BreedDetail} />
       <Route exact path='/dog' component={FormAdding} />
     </React.Fragment>
   );

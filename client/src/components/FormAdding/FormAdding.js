@@ -50,7 +50,6 @@ export default function  Form(props) {
       return Object.keys(errors).length;
   }
 
-
   return (
     <Fragment>
     <div className="Backdetail">
@@ -87,10 +86,10 @@ export default function  Form(props) {
         </div>
       </form>
 {/*BOTTOM & STRIP -------------------------------------------------------------*/}
-      <Backhomebutton />
+      <Backhomebutton innerText={"BACK HOME"} adress={"/home"}/>
       </div>
 {/*ADVICE -------------------------------------------------------------------*/}
-      <Formadvice breedsCreated={breedsCreated} />
+      <Formadvice breedsCreated={breedsCreated}/>
       <Detailstripe src={footprint} className={"stripeBottom"}/>
     </div>
     </Fragment>

@@ -32,13 +32,22 @@ const Home = (props) => {
 
     // Change page
     const handleOnClick = (pageNumberCatched)=> { setCurrentPage(pageNumberCatched) };
+    // Get All & Find breed
+    const handleFindBreed = (result) => {
+        if (typeof(result)==='string') {
+            let notfound = [{id:0, name:result, weight: 0, image: 'undefined'}];
+            setBreeds(breeds => notfound);
+        } else {
+            setBreeds(breeds => ([...result]));
+        }
+    }
 
 
     return (
         <Fragment>
             <div className="Backdetail">
                 <Detailstripe src={footprint} className={"stripeTop"}/>
-                <Menu className={"Mainmenu"}/>
+                <Menu className={"Mainmenu"} handleFindBreed={handleFindBreed}/>
                 <div className="CardsShow">
                     <span className="totalbreeds">{totalBreeds} Breeds</span>
                     {currentPage && <span className="pageofmany">Page <span>{currentPage}</span> / <span>{totalPages.length}</span></span>}

@@ -27,7 +27,7 @@ class BreedDetail extends React.Component {
           <Detailstripe src={footprint} className={"stripeTop"}/>
           <div className='Main-Form-Container'>
             <Missingtext missingtext={"There is not such breed you are looking for."}/>
-            <Backhomebutton />
+            <Backhomebutton innerText={"BACK HOME"} adress={"/home"}/>
           </div>
           <Detailstripe src={footprint} className={"stripeBottom"}/>
         </div>
@@ -47,7 +47,7 @@ class BreedDetail extends React.Component {
                 <Breedoutput breedoutinnerText={"Weight:"} breedoutcharacteristic={breedDetail.weight} label={"(Kg)"} className={['data2','L','R']}/>
                 <Breedoutput breedoutinnerText={"Estimated life span:"} breedoutcharacteristic={breedDetail.life_span} label={""} className={['data2','L','R']}/>
             </div>
-            <Backhomebutton />
+            <Backhomebutton innerText={"BACK HOME"} adress={"/home"}/>
           </div>
           <Detailstripe src={footprint} className={"stripeBottom"}/>
         </div>

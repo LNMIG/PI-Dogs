@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/index.css';
 
 function Pagination ({totalPages, handleOnClick, className}) {
 
@@ -7,7 +8,7 @@ function Pagination ({totalPages, handleOnClick, className}) {
       <ul>
         {totalPages.map(number => (
           <span key={number}>
-            <button onClick={()=> handleOnClick(number)} >{number}</button>
+            <button className="PageBtn" onClick={()=> handleOnClick(number)} >{number}</button>
           </span>
         ))}
       </ul>
