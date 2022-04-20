@@ -18,7 +18,7 @@ export default function  Form(props) {
   const temperList = useSelector(state => state.temperslist)
   const [input,setInput] = useState({ breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[""] });
   const [errors, setErrors] = useState({breedName:""});
-  const [terms, setTerms] = useState({selectedTerm:null});
+  const [temper, setTemper] = useState({selectedTemper:null});
   const options = []
   temperList.forEach(temper => options.push({value:temper.id, label:temper.name}))
  
@@ -27,24 +27,23 @@ export default function  Form(props) {
   const handleSubmit = function (e) {
     e.preventDefault();
     let newT=[];
-    if (terms.selectedTerm !== null) { 
-      newT = terms.selectedTerm.map(t => {return t.label});
+    if (temper.selectedTemper !== null) { 
+      newT = temper.selectedTemper.map(t => {return t.label});
     } else {
       newT = input.temperaments;
     }
-    let POST = {name: input.breedName, height:`${input.heightMin} - ${input.heightMax}`, weight:`${input.weightMin} - ${input.weightMax}`, life_span:`${input.life_span} years`, image: input.image, temperaments: newT};
-    dispatch(postNewBreed(POST));
+    let POST = {name: input.breedName, height:`${input.heightMin} - ${input.heightMax}`, weight:`${input.weightMin} - ${input.weightMax}`, life_span:`${input.life_span} years`, image: input.image, temperaments: newT};    dispatch(postNewBreed(POST));
     
     setInput({breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[""]}); // hace que los campos input queden limpios una vez que submiteas
     setErrors({breedName:""});
-    setTerms({selectedTerm:null});
+    setTemper({selectedTemper:null});
   }
   const handleInputChange = function (e) {
     setInput({...input, [e.target.name] : e.target.value});
     setErrors(Validate({...input, [e.target.name]: e.target.value}));
   }
-  const handleSelectTempers = function (selectedTerm) {
-    setTerms({ selectedTerm });
+  const handleSelectTempers = function (selectedTemper) {
+    setTemper({ selectedTemper });
   }
   const disableTest = function () {
       return Object.keys(errors).length;
@@ -80,7 +79,7 @@ export default function  Form(props) {
             <Forminputs innerText={"Image"} errors={errors.image} type={"text"} name={"image"}
                        input={input.image} handleInputChange={handleInputChange} placeholder={'insert valid URL OR "none"'} label={"URL"}/>
 {/*TEMPERAMENTS -------------------------------------------------------------*/}
-             <Formselect options={options} value={terms.selectedTerm} onChange={handleSelectTempers}/>
+             <Formselect options={options} value={temper.selectedTemper} onChange={handleSelectTempers}/>
 {/*SUBMIT FORM --------------------------------------------------------------*/}
              <Formsubmit errors={errors} disableTest={disableTest}/>
         </div>

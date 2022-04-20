@@ -1,6 +1,5 @@
 import React from 'react';
 import Select from 'react-select';
-import '../../css/index.css';
 
 export default function FormSelect({options, value, onChange}) {
     return (

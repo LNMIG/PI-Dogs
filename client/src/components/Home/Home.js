@@ -41,13 +41,18 @@ const Home = (props) => {
             setBreeds(breeds => ([...result]));
         }
     }
-
+    let opCreated = [{value:"API", label: "EXISTING BREEDS"},{value:"DB", label: "CREATED BREEDS"}];
+    let opName = [{value:"A-Z", label: "...NAME (A-Z)"},{value:"Z-A", label: "...NAME (Z-A)"}];
+    let opWeight = [{value:"A-Z", label: "SORT BY WEIGHT (A-Z)"},{value:"Z-A", label: "SORT BY WEIGHT (Z-A)"}];
+    let opTempers = [{value:"A-Z", label: "SORT BY WEIGHT (A-Z)"},{value:"Z-A", label: "SORT BY WEIGHT (Z-A)"}];
+    let options = [opCreated,opName,opWeight,opTempers,opTempers];
+    let placeholders = ["GET BREEDS BY...", "SORT BY NAME...", "SORT BY WEIGHT","SORT BY TEMPERAMENTS"]
 
     return (
         <Fragment>
             <div className="Backdetail">
                 <Detailstripe src={footprint} className={"stripeTop"}/>
-                <Menu className={"Mainmenu"} handleFindBreed={handleFindBreed}/>
+                <Menu options={options} placeholders={placeholders} breeds={breeds} className={"Mainmenu"} handleFindBreed={handleFindBreed}/>
                 <div className="CardsShow">
                     <span className="totalbreeds">{totalBreeds} Breeds</span>
                     {currentPage && <span className="pageofmany">Page <span>{currentPage}</span> / <span>{totalPages.length}</span></span>}

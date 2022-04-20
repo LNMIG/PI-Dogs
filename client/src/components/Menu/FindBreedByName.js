@@ -1,18 +1,16 @@
 import React, { useState} from 'react';
-import '../../css/index.css';
+import Button from '../Commondetails/DoSomethingInput.js';
 
 
-export default function FindBreedButton({placeholder, handleFindBreed}) {
+
+export default function FindBreedButton({className, placeholder, handleFindBreed}) {
 
     const [input,setInput] = useState({ breedName: "" });
-
     const handleInputChange = function (e) {
         setInput(input => ({...input, breedName: e.target.value }));
     }
-
     const handleSubmit = async function (e) { 
         e.preventDefault();
-        
         let nameToSend = "";
         if (!input.breedName) return nameToSend = "";
         nameToSend = (!/^([a-zA-ZÀ-ÖØ-öø-ÿ]{3,30})+\.?(( |-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*$/.test(input.breedName)) ? "" : input.breedName;
@@ -22,14 +20,5 @@ export default function FindBreedButton({placeholder, handleFindBreed}) {
                 .catch(e => console.log(e))
         setInput(input => ({...input, breedName: "" }));
     };
-    
-    return (
-        
-        <form onSubmit={(e)=> handleSubmit(e)}>
-            <div className="FindBreed" >
-                <input className="input" type="text" name="breedName" value={input.breedName} onChange={handleInputChange} placeholder={placeholder}></input>
-                <input className="btnGO" type="submit" value="GO"></input>
-            </div>
-        </form>
-    )
+    return <Button handleSubmit={handleSubmit} handleInputChange={handleInputChange} input={input} className={className} placeholder={placeholder}/>
 };
