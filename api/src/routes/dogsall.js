@@ -32,7 +32,7 @@ router.get('/', async function(req, res, next){
                             filtBreedsDB.push({id, name, weight, temperament: tempers[0].name, image});
             });
 
-            let finalResult = [...filtBreedsAPI, ...filtBreedsDB].sort((a,b) => {if (a.name < b.name) return -1});
+            let finalResult = [...filtBreedsAPI, ...filtBreedsDB]; //.sort((a,b) => {if (a.name < b.name) return -1});
         
             finalResult.length > 0 ? res.status(201).json(finalResult) : res.status(404).json('Sorry, there is no breed');
 
@@ -56,7 +56,7 @@ router.get('/', async function(req, res, next){
                 filtBreedDB.push({id, name, weight, temperament: tempers[0].name, image});
             });
 
-            let finalResult = [...filtBreedAPI, ...filtBreedDB].sort((a,b) => {if (a.name < b.name) {return  -1}});
+            let finalResult = [...filtBreedAPI, ...filtBreedDB]; //.sort((a,b) => {if (a.name < b.name) {return  -1}});
 
             finalResult.length > 0 ? res.status(201).json(finalResult) : res.status(404).json('Sorry, there is no breed matching your search');
         } 
