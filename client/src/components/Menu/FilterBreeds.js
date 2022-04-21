@@ -12,13 +12,18 @@ export default function FilterBreeds({options, placeholder, className, handleFin
     const handleSubmit = function (e) { 
         e.preventDefault();
         mode = sort.sortSelected===null ? 'API' : sort.sortSelected.value;
-        if(mode==='API') { prev = allBreeds.filter(b => b.id <= 1000);}
-        else if (mode==='DB') { prev = allBreeds.filter(b => b.id > 1000); }
-        else { prev=[];}
+        if(mode==='API') { prev = allBreeds.filter(b => b.id <= 1000); setSort({sortSelected: null}) }
+        else if (mode==='DB') { prev = allBreeds.filter(b => b.id > 1000); setSort({sortSelected: null}) }
+        else { 
+            prev = allBreeds.filter(b => { 
+                return b.temperament ? b.temperament.toLowerCase().includes(mode.toLowerCase()) ? true : false : false   });
+            setSort({sortSelected: null})
+        }
         result = prev.length===0 ? 'Sorry, there is no breed matching your search' : prev;
         handleFindBreed(result);
     };
-    return (
-        <Button options={options} placeholder={placeholder} value={sort.sortSelected} onChange={onChange} handleSubmit={handleSubmit} className={className}/>
+    
+    return ( <Button options={options} placeholder={placeholder} value={sort.sortSelected}
+                     onChange={onChange} handleSubmit={handleSubmit} className={className}/>
     )
 }

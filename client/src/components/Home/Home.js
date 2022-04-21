@@ -1,7 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { getAllBreeds } from '../../redux/actions';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllBreeds, getTemperaments } from '../../redux/actions';
 import Menu from '../Menu/Mainmenu.js';
 import Detailstripe from '../Commondetails/Detail-stripe.js';
 import BreedCard from '../BreedCard/BreedCard.js';
@@ -10,14 +9,16 @@ import footprint from '../../assets/footprintviolet.png';
 
 
 const Home = (props) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const allBreeds = useSelector(state => state.allBreeds);
+    const allTempers = useSelector(state => state.temperslist);
     const [breeds, setBreeds] = useState([]); 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [breedsPerPage] = useState(8);
 
-    useEffect ( ()=> { dispatch(getAllBreeds())}, [dispatch]);
-    useEffect ( ()=> { setBreeds(breeds => ([...props.breeds])); }, [props.breeds]);
+    useEffect ( ()=> { dispatch(getAllBreeds()); dispatch(getTemperaments())}, [dispatch]);
+    useEffect ( ()=> { setBreeds(breeds => ([...allBreeds]))}, [allBreeds, allTempers]);
     useEffect ( ()=> { (breeds.length===0) ? setLoading(true) : setLoading(false)},[breeds]);
 
     // Get current breeds
@@ -41,19 +42,20 @@ const Home = (props) => {
             setBreeds(breeds => ([...result]));
         }
     }
+    // Variables for several selection lists 
     let opCreated = [{value:"API", label: "EXISTING BREEDS"},{value:"DB", label: "CREATED BREEDS"}];
     let opName = [{value:"A-Z", label: "...NAME (A-Z)"},{value:"Z-A", label: "...NAME (Z-A)"}];
-    let opWeight = [{value:"A-Z", label: "SORT BY WEIGHT (A-Z)"},{value:"Z-A", label: "SORT BY WEIGHT (Z-A)"}];
-    let opTempers = [{value:"A-Z", label: "SORT BY WEIGHT (A-Z)"},{value:"Z-A", label: "SORT BY WEIGHT (Z-A)"}];
-    let options = [opCreated,opName,opWeight,opTempers,opTempers];
-    let placeholders = ["GET BREEDS BY...", "SORT BY NAME...", "SORT BY WEIGHT","SORT BY TEMPERAMENTS"]
-
+    let opWeight = [{value:"MIN-MAX", label: "...WEIGHT (min - max)"},{value:"MAX-MIN", label: "...WEIGHT (max - min)"}];
+    let opTempers = []; allTempers.forEach(temper => opTempers.push({value:temper.name.toUpperCase(), label:temper.name.toUpperCase()}))
+    let options = [opCreated,opName,opWeight,opTempers];
+    let placeholders = ["GET BREEDS FROM...", "SORT BY NAME...", "SORT BY WEIGHT...","FILTER BY TEMPERAMENTS"]
+   
     return (
-        <Fragment>
+        <div>
             <div className="Backdetail">
                 <Detailstripe src={footprint} className={"stripeTop"}/>
                 <Menu options={options} placeholders={placeholders} breeds={breeds} className={"Mainmenu"} handleFindBreed={handleFindBreed}/>
-                <div className="CardsShow">
+                <div className="ButtonsStrip">
                     <span className="totalbreeds">{totalBreeds} Breeds</span>
                     {currentPage && <span className="pageofmany">Page <span>{currentPage}</span> / <span>{totalPages.length}</span></span>}
                     <Pagination totalPages={totalPages} handleOnClick={handleOnClick} className={"navigation"}/>
@@ -63,14 +65,15 @@ const Home = (props) => {
                 </div>
                 <Detailstripe src={footprint} className={"stripeBottom"}/>
             </div>
-        </Fragment>
+        </div>
     )
 
 
 };
-function mapStateToProps (state) { return { breeds: state.allBreeds }; }
-function mapDispatchToProps (dispatch) { return { getAll: () => dispatch(getAllBreeds()) }; }
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
+// function mapStateToProps (state) { return { breeds: state.allBreeds, temperlist: state.temperslist }; }
+// function mapDispatchToProps (dispatch) { return { getAll: () => dispatch(getAllBreeds()), getTempers: () => dispatch(getTemperaments()) }; }
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 
 

@@ -10,7 +10,6 @@ import '../../css/index.css';
 export default function Breedcard ({breeds, loading, className}) {
 
     let A = "undefined", B = "none", C = "https://cdn2.thedogapi.com/images/undefined.jpg", D = "https://cdn2.thedogapi.com/images/.jpg";
-
     if (loading) {
         return <h2>Loading...</h2>;
     }

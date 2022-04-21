@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 
 export default function SearchSomethingButton({options, placeholder, value, onChange, handleSubmit, className}) {
-    console.log(value)
+
     return (
         <form onSubmit={(e)=> handleSubmit(e)}>
             <div className={className[0]} >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postNewBreed, getTemperaments } from '../../redux/actions';
 import Validate from './Validateinput.js';
@@ -50,7 +50,7 @@ export default function  Form(props) {
   }
 
   return (
-    <Fragment>
+    <div>
     <div className="Backdetail">
       <Detailstripe src={footprint} className={"stripeTop"}/>
       <div className='Main-Form-Container'>
@@ -91,6 +91,6 @@ export default function  Form(props) {
       <Formadvice breedsCreated={breedsCreated}/>
       <Detailstripe src={footprint} className={"stripeBottom"}/>
     </div>
-    </Fragment>
+    </div>
   )
 };

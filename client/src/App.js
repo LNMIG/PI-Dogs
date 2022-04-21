@@ -8,12 +8,12 @@ import FormAdding from "./components/FormAdding/FormAdding";
 
 function App() {
   return (
-    <React.Fragment>
+    <div>
       <Route exact path='/' component={Landing} />
       <Route exact path='/home' component={Home} />
       <Route exact path='/dogs/:idBreed' component={BreedDetail} />
       <Route exact path='/dog' component={FormAdding} />
-    </React.Fragment>
+    </div>
   );
 }
 
