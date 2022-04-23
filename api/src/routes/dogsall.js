@@ -28,19 +28,27 @@ router.get('/', async function(req, res, next){
             });
 
             allBreedsDB.forEach(breed => {
+                
                             let {id, name, weight, tempers, image} = breed;
-                            filtBreedsDB.push({id, name, weight, temperament: tempers[0].name, image});
+                            let temperament = !tempers.length ? "" : tempers[0].dataValues.name;
+                            filtBreedsDB.push({id, name, weight, temperament: temperament, image});
             });
 
             let finalResult = [...filtBreedsAPI, ...filtBreedsDB]; //.sort((a,b) => {if (a.name < b.name) return -1});
         
-            finalResult.length > 0 ? res.status(201).json(finalResult) : res.status(404).json('Sorry, there is no breed');
+            finalResult.length > 0 ? res.status(200).json(finalResult) : res.status(404).json('Sorry, there is no breed');
 
         } else {
 
             // --------------- PARA  get /dogs?name="..." ----------
             const oneBreedDB = await Breed.findAll({
-                where: { name: { [Op.substring]: name, } },
+                where: { 
+                        name: { 
+                            [Op.or]: {
+                                [Op.iLike]: name+'%',
+                                [Op.substring]: name,
+                            } 
+                        }},
                 include: Temper  
             });
             const oneBreedAPI = await fetch (`https://api.thedogapi.com/v1/breeds/search?q=${name}&api_key=${API_KEY}`).then(result => result.json());
@@ -58,7 +66,7 @@ router.get('/', async function(req, res, next){
 
             let finalResult = [...filtBreedAPI, ...filtBreedDB]; //.sort((a,b) => {if (a.name < b.name) {return  -1}});
 
-            finalResult.length > 0 ? res.status(201).json(finalResult) : res.status(404).json('Sorry, there is no breed matching your search');
+            finalResult.length > 0 ? res.status(200).json(finalResult) : res.status(404).json('Sorry, there is no breed matching your search');
         } 
     } catch (error) {
         next (error)
@@ -85,11 +93,11 @@ router.get('/:idBreed', async function(req, res, next){
         if (idBreedDB.length > 0) { 
             let {name, weight, height, tempers, life_span, image} = idBreedDB[0];
             finalResult.push({name, weight, height, life_span, temperament: tempers[0].name, image});
-            return res.status(201).json(...finalResult);
+            return res.status(200).json(...finalResult);
         } else {
             let {name, weight, height, temperament, life_span, image} = idBreedAPI[0];
             finalResult.push({name, weight: weight.metric, height: height.metric, life_span, temperament, image:image.url});
-            return res.status(201).json(...finalResult);
+            return res.status(200).json(...finalResult);
         }
     } catch (error) {
           next (error)

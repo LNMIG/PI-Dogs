@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const fetch = require ('node-fetch');
-const sequelize = require('sequelize');
-const Op = sequelize.Op;
 const { Breed, Temper } = require('../db.js');
 
 router.post('/', async function(req, res, next){
@@ -37,7 +34,7 @@ router.post('/', async function(req, res, next){
         }
 
         createdB    ? res.status(201).json({newBreed: 'New breed added to database!'})
-                    : res.status(201).json({newBreed: 'Sorry, new breed not added. There is already a breed matching yours', data: breed});
+                    : res.status(204).json({newBreed: 'Sorry, new breed not added. There is already a breed matching yours', data: breed});
 
     } catch (error) {
         next(error);
