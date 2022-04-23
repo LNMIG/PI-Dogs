@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import Button from '../Commondetails/SearchSomethingButton.js';
+import Button from '../Commondetails/SortSomething.js';
 
-export default function SortBreedName({options, placeholder, currentBreeds, className, handleFindBreed}) {
+export default function SortTestName({options, placeholder, currentBreeds, className, handleFindBreed}) {
 
     let result=[], mode="";
     const [sort, setSort] = useState({sortSelected: null});
-    const onChange = function (sortSelected) { setSort({ sortSelected }) };
+    const onChange = function (sortSelected) {  setSort({ sortSelected: sortSelected.target.value }) };
     const handleSubmit = function (e) { 
         e.preventDefault();
-        mode = sort.sortSelected===null ? 'A-Z' : sort.sortSelected.value;
+        mode = sort.sortSelected===null ? 'A-Z' : sort.sortSelected;
         if(mode==='A-Z') { currentBreeds.sort((a,b) => {if (b.name > a.name) return -1; return 0}); setSort({sortSelected: null}) }
         else if (mode==='Z-A') { currentBreeds.sort((a,b) => {if (a.name > b.name) return -1; return 0}); setSort({sortSelected: null}) }
         else { currentBreeds=[];}
@@ -18,4 +18,5 @@ export default function SortBreedName({options, placeholder, currentBreeds, clas
     return (
         <Button options={options} placeholder={placeholder} value={sort.sortSelected} onChange={onChange} handleSubmit={handleSubmit} className={className}/>
     )
+
 }

@@ -1,11 +1,14 @@
-import React from 'react';
-import Select from 'react-select';
 
-export default function FormSelect({options, value, onChange}) {
+export default function FormSelect({options, value, placeholder, onChange}) {
     return (
-        <Select options={options} value={value} onChange={onChange} className="S"
-        placeholder="Select temperaments"
-        isMulti
-        />
+        <div className="Formselect">
+            <span className="label">
+                Temperaments
+            (select as wished)
+            </span>
+        <select multiple={true} name={placeholder} value={value.length>0 ? value : placeholder} onChange={()=>{}} className="selectbox">
+            {options.map(el => <option key={el.value} value={el.value} onClick={onChange}>{el.label}</option>)}
+        </select>
+        </div>
     )
 };

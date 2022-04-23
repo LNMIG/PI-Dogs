@@ -13,11 +13,12 @@ import missing from '../../assets/missingdog.png';
 import footprint from '../../assets/footprintviolet.png';
 
 class BreedDetail extends React.Component {
+  
   async componentDidMount() {
     const idBreed = await this.props.match.params.idBreed;
     await this.props.getBreedsDetail(idBreed);
   }
-
+  
   render() {
     const {breedDetail} = this.props;
     if (Object.entries(breedDetail).length === 0) {

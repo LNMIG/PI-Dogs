@@ -18,7 +18,7 @@ const Home = (props) => {
     const [breedsPerPage] = useState(8);
 
     useEffect ( ()=> { dispatch(getAllBreeds()); dispatch(getTemperaments())}, [dispatch]);
-    useEffect ( ()=> { setBreeds(breeds => ([...allBreeds]))}, [allBreeds, allTempers]);
+    useEffect ( ()=> { setBreeds(breeds => ([...allBreeds]))}, [allBreeds]);
     useEffect ( ()=> { (breeds.length===0) ? setLoading(true) : setLoading(false)},[breeds]);
 
     // Get current breeds
@@ -71,46 +71,3 @@ const Home = (props) => {
 
 };
 export default Home;
-// function mapStateToProps (state) { return { breeds: state.allBreeds, temperlist: state.temperslist }; }
-// function mapDispatchToProps (dispatch) { return { getAll: () => dispatch(getAllBreeds()), getTempers: () => dispatch(getTemperaments()) }; }
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-
-
-
-
-// class Home extends React.Component {
-//     state = {breeds: [], loading: false, currentPage: 1, breedsPerPage: 8};
-//     async componentDidMount() {
-//         this.setState({ loading:true });
-//         await this.props.getAll();
-//         this.setState({breeds: this.props.breeds});
-//         this.setState({ loading: false});
-//     };
-
-//     indexOfLastBreed = this.state.currentPage * this.state.breedsPerPage;
-//     indexOfFirstBreed = this.indexOfLastBreed - this.state.breedsPerPage;
-//     currentBreeds = this.state.breeds.slice(0,8);
-    
-
-//     render() {
-//     console.log(this.state.breeds.slice(0,2))
-//     console.log(this.indexOfLastBreed)
-//     console.log(this.indexOfFirstBreed)
-//     console.log(this.currentBreeds)
-//         return (
-//             <Fragment>
-//                 <div className="backdetail">
-//                   <Detailstripe src={footprint}/>
-//                     <h1>Pagination</h1>
-//                     <BreedCard breeds={this.currentBreeds} loading={this.state.loading}/>
-//                   <Detailstripe src={footprint}/>
-//                 </div>
-//             </Fragment>
-//         )
-//     }
-// };
-
-// function mapStateToProps (state) { return { breeds: state.allBreeds }; }
-// function mapDispatchToProps (dispatch) { return { getAll: () => dispatch(getAllBreeds()) }; }
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);

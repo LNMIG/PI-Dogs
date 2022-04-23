@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import Button from '../Commondetails/SearchSomethingButton.js';
+import Button from '../Commondetails/SortSomething.js';
 
 export default function SortBreedWeight({options, placeholder, currentBreeds, className, handleFindBreed}) {
 
     let result=[], mode="";
     const [sort, setSort] = useState({sortSelected: null});
-    const onChange = function (sortSelected) { setSort({ sortSelected }) };
+    const onChange = function (sortSelected) { setSort({ sortSelected: sortSelected.target.value }) };
     const handleSubmit = function (e) { 
         e.preventDefault();
-        mode = sort.sortSelected===null ? 'MIN-MAX' : sort.sortSelected.value;
+        mode = sort.sortSelected===null ? 'MIN-MAX' : sort.sortSelected;
         if(mode==='MIN-MAX') { currentBreeds.sort((a,b) => {
             let next = parseInt(b.weight.split(' ')[0]);
             let prev = parseInt(a.weight.split(' ')[0]);

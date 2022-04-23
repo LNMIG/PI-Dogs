@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Button from '../Commondetails/SearchSomethingButton.js';
+import Button from '../Commondetails/SortSomething.js';
 
-export default function FilterBreeds({options, placeholder, className, handleFindBreed}) {
+export default function SortTestBreeds({options, placeholder, className, handleFindBreed}) {
 
     const allBreeds = useSelector(state => state.allBreeds);    
     const [sort, setSort] = useState({sortSelected: null});
     let prev=[], result=[], mode="";
 
-    const onChange = function (sortSelected) { setSort({ sortSelected }) };
+    const onChange = function (sortSelected) { setSort({ sortSelected: sortSelected.target.value }) };
     const handleSubmit = function (e) { 
         e.preventDefault();
-        mode = sort.sortSelected===null ? 'API' : sort.sortSelected.value;
+        mode = sort.sortSelected===null ? 'API' : sort.sortSelected;
         if(mode==='API') { prev = allBreeds.filter(b => b.id <= 1000); setSort({sortSelected: null}) }
         else if (mode==='DB') { prev = allBreeds.filter(b => b.id > 1000); setSort({sortSelected: null}) }
         else { 

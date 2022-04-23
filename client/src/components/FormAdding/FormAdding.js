@@ -14,40 +14,57 @@ import footprint from '../../assets/footprintviolet.png';
 export default function  Form(props) {
   
   const dispatch = useDispatch()
-  const breedsCreated = useSelector(state => state.breedCreated)
-  const temperList = useSelector(state => state.temperslist)
-  const [input,setInput] = useState({ breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[""] });
+  let breedsCreated = useSelector(state => state.breedCreated)
+  const allTempers = useSelector(state => state.temperslist)
+  const [input,setInput] = useState({ breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[] });
   const [errors, setErrors] = useState({breedName:""});
-  const [temper, setTemper] = useState({selectedTemper:null});
+  const [temper, setTemper] = useState({selectedTemper:[]});
   const options = []
-  temperList.forEach(temper => options.push({value:temper.id, label:temper.name}))
- 
+  allTempers.forEach(t => options.push({value: t.name.toUpperCase(), label: t.name.toUpperCase()}))
+  const [isMessage, setIsMessage] = useState(false);
+
   useEffect(() => { dispatch(getTemperaments()) }, [dispatch]);
 
   const handleSubmit = function (e) {
     e.preventDefault();
     let newT=[];
-    if (temper.selectedTemper !== null) { 
-      newT = temper.selectedTemper.map(t => {return t.label});
-    } else {
-      newT = input.temperaments;
-    }
-    let POST = {name: input.breedName, height:`${input.heightMin} - ${input.heightMax}`, weight:`${input.weightMin} - ${input.weightMax}`, life_span:`${input.life_span} years`, image: input.image, temperaments: newT};    dispatch(postNewBreed(POST));
+    if (temper.selectedTemper === []) {newT = input.temperaments;} 
+    newT = temper.selectedTemper.map(t => t.charAt(0)+t.slice(1).toLowerCase() );
     
-    setInput({breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[""]}); // hace que los campos input queden limpios una vez que submiteas
+    let POST = {name: input.breedName, height:`${input.heightMin} - ${input.heightMax}`, weight:`${input.weightMin} - ${input.weightMax}`, life_span:`${input.life_span} years`, image: input.image, temperaments: newT};
+    dispatch(postNewBreed(POST));
+    
+    setInput({breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[]}); // hace que los campos input queden limpios una vez que submiteas
     setErrors({breedName:""});
-    setTemper({selectedTemper:null});
+    setTemper({selectedTemper:[]});
+    setIsMessage(true);
   }
   const handleInputChange = function (e) {
     setInput({...input, [e.target.name] : e.target.value});
     setErrors(Validate({...input, [e.target.name]: e.target.value}));
   }
-  const handleSelectTempers = function (selectedTemper) {
-    setTemper({ selectedTemper });
+
+  const handleSelectTempers = function (selectedT) {
+    // if (typeof(selectedT.target.value)==='string') {
+      if(temper.selectedTemper.includes(selectedT.target.value)) {
+        let position = temper.selectedTemper.indexOf(selectedT.target.value);
+        let actual = temper.selectedTemper;
+        actual.splice(position, 1)
+        setTemper(temper => ({...temper, selectedTemper: actual }));
+      } else {
+        setTemper(temper => ({...temper, selectedTemper: temper.selectedTemper.concat(selectedT.target.value) }));
+      }
+    // } else {
+    //   return;
+    // }
   }
   const disableTest = function () {
       return Object.keys(errors).length;
   }
+  const handleClick = function () {
+      setIsMessage(false);
+  }
+
 
   return (
     <div>
@@ -79,7 +96,7 @@ export default function  Form(props) {
             <Forminputs innerText={"Image"} errors={errors.image} type={"text"} name={"image"}
                        input={input.image} handleInputChange={handleInputChange} placeholder={'insert valid URL OR "none"'} label={"URL"}/>
 {/*TEMPERAMENTS -------------------------------------------------------------*/}
-             <Formselect options={options} value={temper.selectedTemper} onChange={handleSelectTempers}/>
+             <Formselect options={options} value={temper.selectedTemper} placeholder={["Select temperaments"]} onChange={handleSelectTempers} />
 {/*SUBMIT FORM --------------------------------------------------------------*/}
              <Formsubmit errors={errors} disableTest={disableTest}/>
         </div>
@@ -88,7 +105,7 @@ export default function  Form(props) {
       <Backhomebutton innerText={"BACK HOME"} adress={"/home"}/>
       </div>
 {/*ADVICE -------------------------------------------------------------------*/}
-      <Formadvice breedsCreated={breedsCreated}/>
+      <Formadvice isMessage={isMessage} handleClick={handleClick} breedsCreated={breedsCreated}/>
       <Detailstripe src={footprint} className={"stripeBottom"}/>
     </div>
     </div>
