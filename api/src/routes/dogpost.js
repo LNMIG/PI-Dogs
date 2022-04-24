@@ -33,8 +33,7 @@ router.post('/', async function(req, res, next){
             await breed.addTempers(temper);
         }
 
-        createdB    ? res.status(201).json({newBreed: 'New breed added to database!'})
-                    : res.status(204).json({newBreed: 'Sorry, new breed not added. There is already a breed matching yours', data: breed});
+        createdB    ? res.status(201).json({newBreed: 'New breed added to database!'}) : null;
 
     } catch (error) {
         next(error);
@@ -42,3 +41,5 @@ router.post('/', async function(req, res, next){
 });
 
 module.exports = router;
+
+//: res.status(204).json({newBreed: 'Sorry, new breed not added. There is already a breed matching yours', data: breed});
