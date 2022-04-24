@@ -1,7 +1,6 @@
 const initialState = {
         allBreeds:[],
         breedCreated:{},
-        breedsDetail: {},
         temperslist:[]
 }
 
@@ -12,21 +11,16 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 allBreeds: action.payload
             }
-        case "GET_BREED_DETAIL":
-            return {
-                ...state,
-                breedsDetail: action.payload
-            }
         case "GET_TEMPERS_LIST":
             return {
                 ...state,
                 temperslist: action.payload
             }
         case "POST_NEW_BREED":
-        return {
-            ...state,
-            breedCreated: action.payload
-        }
+            return {
+                ...state,
+                breedCreated: action.payload
+            }
     default:
         return state;
     }

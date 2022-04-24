@@ -17,6 +17,7 @@ export default function  Form(props) {
   let breedsCreated = useSelector(state => state.breedCreated)
   const allTempers = useSelector(state => state.temperslist)
   const [input,setInput] = useState({ breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[] });
+  //const [input,setInput] = useState({ breedName:"",heightMin:"",heightMax:"",weightMin:"",weightMax:"",life_span:"",image:"",temperaments:[],addedtemperaments:"" });
   const [errors, setErrors] = useState({breedName:""});
   const [temper, setTemper] = useState({selectedTemper:[]});
   const options = []
@@ -45,7 +46,6 @@ export default function  Form(props) {
   }
 
   const handleSelectTempers = function (selectedT) {
-    // if (typeof(selectedT.target.value)==='string') {
       if(temper.selectedTemper.includes(selectedT.target.value)) {
         let position = temper.selectedTemper.indexOf(selectedT.target.value);
         let actual = temper.selectedTemper;
@@ -54,9 +54,6 @@ export default function  Form(props) {
       } else {
         setTemper(temper => ({...temper, selectedTemper: temper.selectedTemper.concat(selectedT.target.value) }));
       }
-    // } else {
-    //   return;
-    // }
   }
   const disableTest = function () {
       return Object.keys(errors).length;
@@ -64,7 +61,6 @@ export default function  Form(props) {
   const handleClick = function () {
       setIsMessage(false);
   }
-
 
   return (
     <div>

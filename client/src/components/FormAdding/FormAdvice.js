@@ -2,7 +2,6 @@ import React from 'react';
 import '../../css/index.css';
 
 export default function FormAdvice({isMessage, handleClick, breedsCreated}) {
-   
     return (
         <div className={`FormAdviceGral${isMessage ? "Active" : "Inactive"}`}>
         <div className={`FormAdvice${isMessage ? "Active" : "Inactive"}`} >
