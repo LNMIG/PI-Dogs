@@ -5,7 +5,7 @@ function Pagination ({totalPages, handleOnClick, className}) {
 
   return (
     <nav className={className}>
-      <ul>
+      <ul className="ULcontainer">
         {totalPages.map(number => (
           <span key={number}>
             <button className="PageBtn" onClick={()=> handleOnClick(number)} >{number}</button>

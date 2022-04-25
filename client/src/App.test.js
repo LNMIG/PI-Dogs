@@ -74,19 +74,6 @@ describe(('Testing for Error 404 page'), () => {
 
 describe(('Testing for details showed for selected breed'), () => {
   test('Loads and Displays an error message not finding a dog', () => {
-    // const props = {
-    //   dispatch: jest.fn(),
-    //   breedsDetail: {
-    //     name: 'Apocalipto',
-    //     weight:'10 - 20',
-    //     height: '25 - 35',
-    //     image: 'none',
-    //     life_span: '17 - 25 years',
-    //     temepraments: 'Good'
-    //   }
-    // }
-    // const wrapper = shallow(<BreedDetail {...props}/>)
-    // expect(wrapper.find('p').text()).toEqual('Apocalipto')
 
     let UserContext = React.createContext();
     let state = {d: 1}
