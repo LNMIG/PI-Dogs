@@ -14,14 +14,13 @@ function filterTempers (tempers) {
     return finalTemperaments;
 }
 
-
 router.get('/', async function(req, res, next){
 
     const {name} = req.query;
 
     try {
         if (!name) { 
-            // --------------- PARA " get /dogs " ----------
+            // --------------- FOR " get /dogs " ----------
             //const allBreedsAPI = await fetch ('https://api.thedogapi.com/v1/breeds');
             //const dataBreedsAPI = await allBreedsAPI.json(); 
            
@@ -44,7 +43,7 @@ router.get('/', async function(req, res, next){
 
         } else {
 
-            // --------------- PARA  get /dogs?name="..." ----------
+            // --------------- FOR  get /dogs?name="..." ----------
             const oneBreedDB = await Breed.findAll({
                 where: { 
                         name: { 
@@ -58,7 +57,6 @@ router.get('/', async function(req, res, next){
             const oneBreedAPI = await fetch (`https://api.thedogapi.com/v1/breeds/search?q=${name}&api_key=${API_KEY}`).then(result => result.json());
 
             let filtBreedDB =[], filtBreedAPI = [];
-
             oneBreedAPI.forEach(breed => {
                 let {id, name, weight, temperament, reference_image_id} = breed;
                 filtBreedAPI.push({id, name, weight: weight.metric, temperament, image: `https://cdn2.thedogapi.com/images/${reference_image_id}.jpg`});
@@ -69,7 +67,7 @@ router.get('/', async function(req, res, next){
                 filtBreedDB.push({id, name, weight, temperament: temperaments, image});
             });
 
-            let finalResult = [...filtBreedAPI, ...filtBreedDB]; //.sort((a,b) => {if (a.name < b.name) {return  -1}});
+            let finalResult = [...filtBreedAPI, ...filtBreedDB];
 
             finalResult.length > 0 ? res.status(200).json(finalResult) : res.status(404).json('Sorry, there is no breed matching your search');
         } 
@@ -78,7 +76,7 @@ router.get('/', async function(req, res, next){
     }
 });
 
-// --------------- PARA  get /dogs/{idRaza} ----------
+// --------------- FOR  get /dogs/{idRaza} ----------
 router.get('/:idBreed', async function(req, res, next){
 
     try {

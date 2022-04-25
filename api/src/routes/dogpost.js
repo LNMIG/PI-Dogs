@@ -4,8 +4,8 @@ const { Breed, Temper } = require('../db.js');
 router.post('/', async function(req, res, next){
     try {
         const {name, height, weight, life_span, image, temperaments} = req.body;
-        let newTemperaments = [];
         
+        let newTemperaments = [];
         if(!Array.isArray(temperaments)) {
             newTemperaments = temperaments.split(',').map(temper => {return temper.trim()}).sort().filter(temper => temper !=='');
         } else {
@@ -33,7 +33,7 @@ router.post('/', async function(req, res, next){
             await breed.addTempers(temper);
         }
 
-        createdB    ? res.status(201).json({newBreed: 'New breed added to database!'}) : null;
+        createdB ? res.status(201).json({newBreed: 'New breed added to database!'}) : null;
 
     } catch (error) {
         next(error);
