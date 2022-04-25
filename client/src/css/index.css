@@ -77,6 +77,20 @@
   font-size: 1.5rem;
   text-align: start;
 }
+.Deleted {
+  background-color: rgba(224, 224, 224, 0.8);
+  width: 40%;
+  height: calc(40% + 3rem);
+  position: absolute;
+  left: 30%;
+  top: 20%;
+}
+.Deleted p {
+  padding: 2rem;
+  color: green;
+  font-size: 2.5rem;
+  text-align: center;
+}
 .Backdetail {
   display: flex;
   flex-direction: column;
@@ -689,6 +703,24 @@
   font-weight: 600;
   margin-left: 1rem;
   height: fit-content;
+}
+.Existinginfo .deletecontainer {
+  width: 70%;
+  height: 5%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+.Existinginfo .deletecontainer .deletebtn {
+  background-color: green;
+  width: 40%;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  letter-spacing: 0.3rem;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
 }
 .Smallcontainer {
   background-color: #e8f1f5;

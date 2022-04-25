@@ -7,6 +7,7 @@ import Breedname from '../Commondetails/BreedName.js';
 import Breedimage from '../Commondetails/BreedImage.js';
 import Breedtemper from '../Commondetails/BreedTemper.js';
 import Breedoutput from '../Commondetails/BreedOutput.js';
+import DeleteBtn from '../Commondetails/CommonBtn.js';
 import '../../css/index.css';
 import missing from '../../assets/missingdog.png';
 import footprint from '../../assets/footprintviolet.png';
@@ -14,8 +15,10 @@ import footprint from '../../assets/footprintviolet.png';
 let URL = process.env.REACT_APP_API || 'http://localhost:3001' 
 
 const BreedDetail = (props) => {
+
   const [breedDetail, setBreedDetail] = useState({});
   const {idBreed} = useParams();
+  const delBreed = idBreed>=1001 ? true : false;
 
   useEffect ( ()=> { 
     async function Fetch (idBreed) {
@@ -25,6 +28,7 @@ const BreedDetail = (props) => {
     }
     Fetch(idBreed);
   },[idBreed]);
+
 
   if (Object.entries(breedDetail).length === 0) {
     return (
@@ -51,6 +55,9 @@ const BreedDetail = (props) => {
                 <Breedoutput breedoutinnerText={"Height:"} breedoutcharacteristic={breedDetail.height} label={"(cm)"} className={['data2','L','R']}/>
                 <Breedoutput breedoutinnerText={"Weight:"} breedoutcharacteristic={breedDetail.weight} label={"(Kg)"} className={['data2','L','R']}/>
                 <Breedoutput breedoutinnerText={"Estimated life span:"} breedoutcharacteristic={breedDetail.life_span} label={""} className={['data2','L','R']}/>
+                <div className={'deletecontainer'}>
+                { delBreed ? <DeleteBtn idBreed={idBreed} innerText={'DELETE'} className={'deletebtn'} /> : null }
+                </div>
             </div>
             <Backhomebutton innerText={"BACK HOME"} adress={"/home"}/>
           </div>
