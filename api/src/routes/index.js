@@ -4,6 +4,7 @@ const { Router } = require('express');
 const dogsall = require('./dogsall.js');
 const temperament = require('./temperament.js');
 const dogpost = require('./dogpost.js');
+const deletedog = require('./deletedog.js');
 
 const router = Router();
 
@@ -12,5 +13,6 @@ const router = Router();
 router.use('/dogs', dogsall);
 router.use('/temperament', temperament);
 router.use('/dog', dogpost);
+router.use('/dog/delete', deletedog);
 
 module.exports = router;
