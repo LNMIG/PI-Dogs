@@ -1,8 +1,9 @@
+let URL = process.env.REACT_APP_API || 'http://localhost:3001' 
 
 export const getAllBreeds = () => {
     return async function (dispatch) {
         try {
-            const r = await fetch(`http://localhost:3001/dogs`);
+            const r = await fetch(`${URL}/dogs`);
             const json = await r.json();
             return dispatch({ type: "GET_ALL_BREEDS", payload: json });
         } catch (e) {
@@ -14,7 +15,7 @@ export const getAllBreeds = () => {
 export const getTemperaments = () => {
     return async function (dispatch) {
             try {
-                const r = await fetch(`http://localhost:3001/temperament`);
+                const r = await fetch(`${URL}/temperament`);
                 const json = await r.json();
                 return dispatch({ type: "GET_TEMPERS_LIST", payload: json });
             } catch (e) {
@@ -25,7 +26,7 @@ export const getTemperaments = () => {
 
 export const postNewBreed = (formData) => {
     return function (dispatch) {
-        return fetch (`http://localhost:3001/dog`, {
+        return fetch (`${URL}/dog`, {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {'Content-Type': 'application/json' }

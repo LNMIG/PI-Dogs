@@ -11,6 +11,7 @@ import '../../css/index.css';
 import missing from '../../assets/missingdog.png';
 import footprint from '../../assets/footprintviolet.png';
 
+let URL = process.env.REACT_APP_API || 'http://localhost:3001' 
 
 const BreedDetail = (props) => {
   const [breedDetail, setBreedDetail] = useState({});
@@ -18,7 +19,7 @@ const BreedDetail = (props) => {
 
   useEffect ( ()=> { 
     async function Fetch (idBreed) {
-      const r = await fetch (`http://localhost:3001/dogs/${idBreed}`);
+      const r = await fetch (`${URL}/dogs/${idBreed}`);
       const json = await r.json();
       setBreedDetail(json);
     }

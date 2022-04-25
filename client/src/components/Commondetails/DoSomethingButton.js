@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function DoSomethingButton({handleSubmit, className, placeholder}) {
 return (

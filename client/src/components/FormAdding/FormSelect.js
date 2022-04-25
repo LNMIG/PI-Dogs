@@ -1,3 +1,4 @@
+import '../../css/index.css';
 
 export default function FormSelect({options, value, placeholder, onChange}) {
     return (

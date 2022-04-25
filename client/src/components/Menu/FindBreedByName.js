@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import Button from '../Commondetails/DoSomethingInput.js';
 
-
+let URL = process.env.REACT_APP_API || 'http://localhost:3001'
 
 export default function FindBreedButton({className, placeholder, handleFindBreed}) {
 
@@ -14,7 +14,7 @@ export default function FindBreedButton({className, placeholder, handleFindBreed
         let nameToSend = "";
         if (!input.breedName) return nameToSend = "";
         nameToSend = (!/^([a-zA-ZÀ-ÖØ-öø-ÿ]{3,30})+\.?(( |-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*$/.test(input.breedName)) ? "" : input.breedName;
-        await fetch (`http://localhost:3001/dogs?name=${nameToSend}`)
+        await fetch (`${URL}/dogs?name=${nameToSend}`)
                 .then(r => r.json())
                 .then(json => handleFindBreed(json))
                 .catch(e => console.log(e))

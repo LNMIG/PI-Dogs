@@ -1,5 +1,3 @@
-import React from 'react';
-import '../../css/index.css';
 
 export default function Breedoutput({breedoutinnerText, breedoutcharacteristic, label, className}) {
     return (

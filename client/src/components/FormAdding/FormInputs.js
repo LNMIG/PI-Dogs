@@ -1,4 +1,3 @@
-import React from 'react';
 import '../../css/index.css';
 
 export default function FormInputs({innerText, errors, type, name, input, handleInputChange, placeholder, label}) {
