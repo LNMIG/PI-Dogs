@@ -15,7 +15,20 @@ const Home = (props) => {
     const [breeds, setBreeds] = useState([]); 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [breedsPerPage] = useState(8);
+    const [breedsPerPage, setBreedsPerPage] = useState(8);
+    const [width, setWidth] = useState(window.innerWidth)
+    
+
+    useEffect( () => {
+        const reSize = () => setWidth(window.innerWidth)
+        window.addEventListener('resize', reSize)
+        if (width > 1700 && width <=1980) setBreedsPerPage(12);
+        if (width > 1570 && width <= 1700) setBreedsPerPage(10);
+        if (width > 1255 && width <= 1570) setBreedsPerPage(8);
+        if (width > 940 && width <= 1255) setBreedsPerPage(6);
+        if (width > 640 && width <= 940) setBreedsPerPage(4);
+        if (width > 350 && width <= 640) setBreedsPerPage(2);
+    },[width])
 
     useEffect ( ()=> { dispatch(getAllBreeds()); dispatch(getTemperaments())}, [dispatch]);
     useEffect ( ()=> { setBreeds(breeds => ([...allBreeds]))}, [allBreeds]);
