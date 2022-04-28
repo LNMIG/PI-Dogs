@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '../Commondetails/SortSomething.js';
 
-export default function SortTestBreeds({options, placeholder, className, handleFindBreed}) {
+export default function FilterBreeds({options, placeholder, className, handleFindBreed}) {
 
-    const allBreeds = useSelector(state => state.allBreeds);    
+    const allBreeds = useSelector(state => state.allBreeds);
     const [sort, setSort] = useState({sortSelected: null});
     let prev=[], result=[], mode="";
 

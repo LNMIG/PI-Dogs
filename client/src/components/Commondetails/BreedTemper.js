@@ -7,7 +7,7 @@ export default function Breedtemper({breedtemperament, className, innerText}) {
         ? breedtemperament === 'none'
         ? <div className={className[0]}>
             <span className={className[1]}>{innerText}</span>
-            <span className={className[2]}>It seems there is no temperament available for this breed</span>
+            <span className={className[2]}>There is no temperament available</span>
           </div>
         : <div className={className[0]}>
             <span className={className[1]}>{innerText}</span>
@@ -15,7 +15,7 @@ export default function Breedtemper({breedtemperament, className, innerText}) {
           </div>
         :<div className={className[0]}>
           <span className={className[1]}>{innerText}</span>
-          <span className={className[2]}>It seems there is no temperament available for this breed</span>
+          <span className={className[2]}>There is no temperament available</span>
         </div>
         }
         </div>

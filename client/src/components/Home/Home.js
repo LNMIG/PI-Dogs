@@ -49,7 +49,7 @@ const Home = (props) => {
     // Get All & Find breed
     const handleFindBreed = (result) => {
         if (typeof(result)==='string') {
-            let notfound = [{id:0, name:result, weight: 0, image: 'undefined'}];
+            let notfound = [{id:0, name:result, weight: 0, image: 'none', temperament: 'none'}];
             setBreeds(breeds => notfound);
         } else {
             setBreeds(breeds => ([...result]));

@@ -17,7 +17,7 @@ function filterTempers (tempers) {
 router.get('/', async function(req, res, next){
 
     const {name} = req.query;
-
+    
     try {
         if (!name) { 
             // --------------- FOR " get /dogs " ----------

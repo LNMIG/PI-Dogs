@@ -3,7 +3,7 @@ const { Breed, Temper } = require('../db.js');
 
 router.post('/', async function(req, res, next){
     try {
-        const {name, height, weight, life_span, image, temperaments} = req.body;
+        let {name, height, weight, life_span, image, temperaments} = req.body;
         
         let newTemperaments = [];
         if(!Array.isArray(temperaments)) {
@@ -11,6 +11,8 @@ router.post('/', async function(req, res, next){
         } else {
             newTemperaments = temperaments;
         }
+        
+        name = name.toLowerCase().split(' ').map(n => {return n.charAt(0).toUpperCase()+n.slice(1)}).join(' ');
         
         const [breed, createdB] = await Breed.findOrCreate({ 
             where: {
@@ -32,8 +34,9 @@ router.post('/', async function(req, res, next){
             });
             await breed.addTempers(temper);
         }
-
-        createdB ? res.status(201).json({newBreed: 'New breed added to database!'}) : null;
+        createdB 
+        ? res.status(201).json({newBreed: 'New breed added to database!'})
+        : res.status(500).json({newBreed: 'Sorry, breed already exists.'});
 
     } catch (error) {
         next(error);
