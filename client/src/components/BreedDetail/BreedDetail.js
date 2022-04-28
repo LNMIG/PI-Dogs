@@ -13,7 +13,7 @@ import missing from '../../assets/missingdog.png';
 import footprint from '../../assets/footprintviolet.png';
 
 let URL = process.env.REACT_APP_API || 'http://localhost:3001' 
-//
+
 const BreedDetail = (props) => {
 
   const [breedDetail, setBreedDetail] = useState({});
