@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '../Commondetails/SortSomething.js';
 
-export default function FilterBreeds({options, placeholder, className, handleFindBreed}) {
+export default function FilterBreeds({options, placeholder, currentBreeds, className, handleFindBreed}) {
 
     const allBreeds = useSelector(state => state.allBreeds);
     const [sort, setSort] = useState({sortSelected: null});
@@ -15,7 +15,7 @@ export default function FilterBreeds({options, placeholder, className, handleFin
         if(mode==='API') { prev = allBreeds.filter(b => b.id <= 1000); setSort({sortSelected: null}) }
         else if (mode==='DB') { prev = allBreeds.filter(b => b.id > 1000); setSort({sortSelected: null}) }
         else { 
-            prev = allBreeds.filter(b => { 
+            prev = currentBreeds.filter(b => { 
                 return b.temperament ? b.temperament.toLowerCase().includes(mode.toLowerCase()) ? true : false : false   });
             setSort({sortSelected: null})
         }

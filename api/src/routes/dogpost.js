@@ -5,6 +5,8 @@ router.post('/', async function(req, res, next){
     try {
         let {name, height, weight, life_span, image, temperaments} = req.body;
         
+        name = name.toLowerCase().split(' ').map(n=> {return n.charAt(0).toUpperCase() + n.slice(1)}).join(' ');
+        
         let newTemperaments = [];
         if(!Array.isArray(temperaments)) {
             newTemperaments = temperaments.split(',').map(temper => {return temper.trim()}).sort().filter(temper => temper !=='');

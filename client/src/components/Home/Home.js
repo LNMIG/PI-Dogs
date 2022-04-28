@@ -53,6 +53,7 @@ const Home = (props) => {
             setBreeds(breeds => notfound);
         } else {
             setBreeds(breeds => ([...result]));
+            setCurrentPage(current => 1);
         }
     }
     // Variables for several selection lists 

@@ -17,7 +17,7 @@ export default function Menu({options, placeholders, breeds, className, handleFi
             <FilterByBreeds isMulti={false} options={options[0]} placeholder={placeholders[0]} className={["SortTestGral", "divcontainer", "select", "btnGO"]} handleFindBreed={handleFindBreed}/>
             <SortByNames isMulti={false} options={options[1]} placeholder={placeholders[1]} currentBreeds={breeds} className={["SortTestGral", "divcontainer", "select", "btnGO"]} handleFindBreed={handleFindBreed}/>
             <SortByWeight isMulti={false} options={options[2]} placeholder={placeholders[2]} currentBreeds={breeds} className={["SortTestGral", "divcontainer", "select", "btnGO"]} handleFindBreed={handleFindBreed}/>
-            <FilterByTemperaments isMulti={false} options={options[3]} placeholder={placeholders[3]} className={["SortTestGral", "divcontainer", "select", "btnGO"]} handleFindBreed={handleFindBreed}/>
+            <FilterByTemperaments isMulti={false} options={options[3]} placeholder={placeholders[3]} currentBreeds={breeds} className={["SortTestGral", "divcontainer", "select", "btnGO"]} handleFindBreed={handleFindBreed}/>
             <Addnewbreed className={["Addbreed", "btn", "btn-link"]} innerText={"ADD YOUR OWN BREED!"} adress={"/dog"}/>
             <Backhomebutton innerText={"LANDING PAGE"} adress={"/"}/>
         </div>
