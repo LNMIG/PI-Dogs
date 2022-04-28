@@ -12,8 +12,6 @@ router.post('/', async function(req, res, next){
             newTemperaments = temperaments;
         }
         
-        name = name.toLowerCase().split(' ').map(n => {return n.charAt(0).toUpperCase()+n.slice(1)}).join(' ');
-        
         const [breed, createdB] = await Breed.findOrCreate({ 
             where: {
                 name,
