@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route strict exact path='/' component={Landing} />
         <Route strict exact path='/home' component={Home} />
-        <Route strict exact path='/dogs/:idBreed' component={BreedDetail} />
+        <Route strict exact path='/dogs/:idBreed/:flag' component={BreedDetail} />
         <Route strict exact path='/dog' component={FormAdding} />
         <Route strict exact path='/dog/delete/:idBreed/:action' component={BreedAction} />
         <Route path='/*' component={Error404} />

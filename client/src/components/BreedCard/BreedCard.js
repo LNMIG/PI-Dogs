@@ -17,7 +17,7 @@ export default function Breedcard ({breeds, loading, className}) {
 
         <div className={className}>
             {breeds.map(breeds => (
-                <NavLink key={breeds.id} exact to={`/dogs/${breeds.id}`} className="cardAsLink">
+                <NavLink key={breeds.id} exact to={`/dogs/${breeds.id}/${breeds.flag}`} className="cardAsLink">
                     <div  className="Smallcontainer" >
                         <Breedimage breedimage={breeds.image !== A ? breeds.image !== B ? breeds.image !== C ? breeds.image !== D ? breeds.image : missing: missing : missing : missing} missing={""} className={"image"}/>
                         <Breedname breedname={breeds.name} className={"cardname"}/>

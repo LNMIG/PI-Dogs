@@ -12,8 +12,8 @@ export default function FilterBreeds({options, placeholder, currentBreeds, class
     const handleSubmit = function (e) { 
         e.preventDefault();
         mode = sort.sortSelected===null ? 'API' : sort.sortSelected;
-        if(mode==='API') { prev = allBreeds.filter(b => b.id <= 1000); setSort({sortSelected: null}) }
-        else if (mode==='DB') { prev = allBreeds.filter(b => b.id > 1000); setSort({sortSelected: null}) }
+        if(mode==='API') { prev = allBreeds.filter(b => b.flag === false); setSort({sortSelected: null}) }
+        else if (mode==='DB') { prev = allBreeds.filter(b => b.flag === true); setSort({sortSelected: null}) }
         else { 
             prev = currentBreeds.filter(b => { 
                 return b.temperament ? b.temperament.toLowerCase().includes(mode.toLowerCase()) ? true : false : false   });

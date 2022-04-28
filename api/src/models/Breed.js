@@ -8,6 +8,11 @@ module.exports = sequelize => {
       autoIncrement: true,
       //set (value) { this.setDataValue('id', value*1000)}
     },
+    flag: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

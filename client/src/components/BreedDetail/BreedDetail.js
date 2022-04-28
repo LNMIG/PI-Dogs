@@ -17,17 +17,16 @@ let URL = process.env.REACT_APP_API || 'http://localhost:3001'
 const BreedDetail = (props) => {
 
   const [breedDetail, setBreedDetail] = useState({});
-  const {idBreed} = useParams();
-  const delBreed = idBreed>=1001 ? true : false;
-
+  const {idBreed, flag} = useParams();
+  
   useEffect ( ()=> { 
-    async function Fetch (idBreed) {
-      const r = await fetch (`${URL}/dogs/${idBreed}`);
+    async function Fetch (idBreed,flag) {
+      const r = await fetch (`${URL}/dogs/${idBreed}/${flag}`);
       const json = await r.json();
       setBreedDetail(json);
     }
-    Fetch(idBreed);
-  },[idBreed]);
+    Fetch(idBreed,flag);
+  },[idBreed,flag]);
 
 
   if (Object.entries(breedDetail).length === 0) {
@@ -56,7 +55,7 @@ const BreedDetail = (props) => {
                 <Breedoutput breedoutinnerText={"Weight:"} breedoutcharacteristic={breedDetail.weight} label={"(Kg)"} className={['data2','L','R']}/>
                 <Breedoutput breedoutinnerText={"Estimated life span:"} breedoutcharacteristic={breedDetail.life_span} label={""} className={['data2','L','R']}/>
                 <div className={'deletecontainer'}>
-                { delBreed ? <DeleteBtn idBreed={idBreed} innerText={'DELETE'} className={'deletebtn'} /> : null }
+                { flag==='true' ? <DeleteBtn idBreed={idBreed} innerText={'DELETE'} className={'deletebtn'} /> : null }
                 </div>
             </div>
             <Backhomebutton innerText={"BACK HOME"} adress={"/home"}/>

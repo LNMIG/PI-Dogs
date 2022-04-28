@@ -24,7 +24,7 @@ router.post('/', async function(req, res, next){
             }
         });
         
-        createdB ? await breed.increment({ 'id': 1000 }) : null;
+        //createdB ? await breed.increment({ 'id': 1000 }) : null;
         
         for (let i=0; i<newTemperaments.length; i++) {
             const [temper, createdT] = await Temper.findOrCreate({ 
