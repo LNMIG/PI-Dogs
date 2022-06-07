@@ -22,7 +22,7 @@
 
 ## Project's Goals
 - Build an App using **React, Redux, Node y Sequelize - PostgreSQL**.
-- Use and practice all concepts learned in the soy HENRY's Bootcamp.
+- Use and practice all concepts learned in the soyHENRY's Bootcamp.
 - Learn better **coding practices**.
 - Learn and practice **GIT's workflow**.
 - Use and practice **testing** on the app.
@@ -57,7 +57,7 @@ __Initial Page__: landing page which contains
 - [ ] Background image about dogs
 - [ ] Start button that leads to Home (`Main route`)
 
-__Main Route__: include
+__Main Route__: includes
 - [ ] Input for searching any breed by entering a name or part of it
 - [ ] An area where it is shown the breeds found. You can see:
   - Image
