@@ -106,3 +106,7 @@ Se desarrolló un servidor en Node/Express con las siguientes rutas:
   - Obtiene todos los temperamentos posibles
 - [ ] __POST /dog__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro y crea una raza de perro en la base de datos
+ 
+### Funcionamiento / How it works
+Puedes clonar este repositorio y luego realizar npm install tanto en la sección Api como en la Client. Luego ejecuta npm start en ambas secciones.
+You can clone this repository and then run npm install in Api and Client sections. After that run npm start in both sections
