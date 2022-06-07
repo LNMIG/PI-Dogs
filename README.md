@@ -2,115 +2,113 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
-# Individual Project - Henry Dogs
+# Individual Project - Henry Dogs App
 
+
+## This is the Landing Page
+![2022-06-07](https://user-images.githubusercontent.com/96741070/172371275-2acaebe6-864c-4e2b-aadc-6d6ccf7eea02.png)
+
+## Here you are in the Home
 ![2022-06-06 (5)](https://user-images.githubusercontent.com/96741070/172275241-434ff75b-91b8-488c-8887-1b45ed35a4dc.png)
 
-## Link al website / Website's link
-[Link to site](https://my-pi-dogs.vercel.app/)
+## You are viewing Details of a particular breed
+![2022-06-07 (1)](https://user-images.githubusercontent.com/96741070/172371531-c13e85ab-a1fa-4503-a463-9f0b4c319db1.png)
 
-## Objetivos del Proyecto / Project's Goals
+## You can also add a new Breed
+![2022-06-07 (2)](https://user-images.githubusercontent.com/96741070/172371734-bbd800e2-a44c-4d7a-b48e-55650423e9a7.png)
 
-- Construir una App utlizando React, Redux, Node y Sequelize. / Build an App using React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera. / Use all concepts learned in the Bootcamp.
-- Aprender mejores prácticas. / Learn better coding practices.
-- Aprender y practicar el workflow de GIT. / Learn the GIT's workflow.
-- Usar y practicar testing. / Practice testing on the app.
 
-## Enunciado / Statement
 
-La idea general fue crear una aplicación en la cual se puedan ver distintas razas de perro junto con información relevante de las mismas utilizando una api externa [the dog api](https://thedogapi.com/) y a partir de ella poder, entre otras cosas:
+## Website's link
+* Once you click in the link you should wait 5 seconds until the data is loaded. Then you can try this app as you wish.
+* Should you have any inconvenience, please let me know.
+* [Link to site](https://my-pi-dogs.vercel.app/)
 
-  - Buscar perros
-  - Filtrarlos / Ordenarlos
-  - Agregar nuevos perros
+## Project's Goals
+- Build an App using **React, Redux, Node y Sequelize - PostgreSQL**.
+- Use and practice all concepts learned in the soy HENRY's Bootcamp.
+- Learn better **coding practices**.
+- Learn and practice **GIT's workflow**.
+- Use and practice **testing** on the app.
 
-__IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO se usaron los endpoints de la API externa, sino que los mismos fueron realizados desde el frontend y el backend.
+## Statement
+The main idea was to create an application which would allow the user to:
+- see different breeds
+- see relevant information of each breed: picture, name, temperaments, weight, height, life span.
 
-## Endpoints utilizados / Endpoints used
+It is used an external API [the dog api](https://thedogapi.com/) from which we can do:
+- Find breeds
+- Filter / Sort
+- Add new breeds
 
-  - GET https://api.thedogapi.com/v1/breeds
-  - GET https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
+__IMPORTANT__: When Sorting or Filtering NO external API's endpoints were used. All the code is in the Frontend or in the Backend.
 
-## Tecnologías empleadas:
+## Endpoints used
+Just these two endpoints where used. The functionality is based on app's code
+- GET https://api.thedogapi.com/v1/breeds
+- GET https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
+
+## Technologies used:
 - [ ] React
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - PostgreSQL
 
-## Frontend
+## In the Frontend
+An app was developed using **React / Redux**. It contains the following routes/pages.
 
-Se desarrolló una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
+__Initial Page__: landing page which contains
+- [ ] Background image about dogs
+- [ ] Start button that leads to Home (`Main route`)
 
-__Página inicial__: landing page que contiene
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+__Main Route__: include
+- [ ] Input for searching any breed by entering a name or part of it
+- [ ] An area where it is shown the breeds found. You can see:
+  - Image
+  - Name
+  - Temperaments
+  - Weight
+- [ ] Filter Options:
+    - By Temperament 
+    - By existing Breed (information comes from external API) or added Breed (created by using a form)
+- [ ] Sort Options, so you can sort by:
+    - Alphabetical order 
+    - Increasing or Decreasing weight
+- [ ] Pagination.
 
-__Ruta principal__: contiene
-- [ ] Input de búsqueda para encontrar razas de perros por nombre
-- [ ] Área donde se verá el listado de razas de perros. Se muestra:
-  - Imagen
-  - Nombre
-  - Temperamento
-  - Peso
-- [ ] Opciones para filtrar por:
-    - Temperamento 
-    - Raza existente (es decir las que vienen de la API) o agregadas (creadas mediante un formulario)
-- [ ] Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
-    - Orden alfabético 
-    - Peso
-- [ ] Paginado para ir buscando y mostrando las siguientes razas.
+__Route for detailing a particular breed__: includes
+- [ ] Image, name and temperament
+- [ ] Height
+- [ ] Weight
+- [ ] Life span
 
-__Ruta de detalle de raza de perro__: contiene
-- [ ] Los campos imagen, nombre y temperamento
-- [ ] Altura
-- [ ] Peso
-- [ ] Años de vida
-
-__Ruta de creación de raza de perro__: contiene
-- [ ] Un formulario controlado con JS con los siguientes campos:
-  - Nombre
-  - Altura
-  - Peso
-  - Años de vida
-- [ ] Posibilidad de seleccionar uno o más temperamentos
-- [ ] Botón para crear una nueva raza de perro
-
+__Route for creating a new breed__: includes
+- [ ] Controlled Form by JS which requires:
+  - Name
+  - Height
+  - Weight
+  - Life span
+- [ ] Selection of one or more temperaments
+- [ ] Cration Button
  
-## Base de datos
-
-El modelo de la base de datos contiene las siguientes entidades:
-
-- [ ] Raza con las siguientes propiedades:
-  - ID
-  - Nombre
-  - Altura
-  - Peso
-  - Años de vida
-- [ ] Temperamento con las siguientes propiedades:
-  - ID
-  - Nombre
-
-
 ## Backend
 
-Se desarrolló un servidor en Node/Express con las siguientes rutas:
+A server was developed based in **Node/Express** including the following routes:
 
 - [ ] __GET /dogs__:
-  - Obtiene un listado de las razas de perro
-  - Devuelve sólo los datos necesarios para la ruta principal
+  - Brings back the list of all breeds
 - [ ] __GET /dogs?name="..."__:
-  - Obtiene un listado de las razas de perro que contienen la palabra ingresada como query parameter
-  - Si no existe una raza de perro se muestra un mensaje adecuado
-- [ ] __GET /dogs/{idRaza}__:
-  - Obtiene el detalle de una raza de perro en particular
+  - Brings back a short list that includes the breeds that match with the name required by the user
+  - If no breed exist a message is shown
+- [ ] __GET /dogs/{idBreed}__:
+  - Brings back details of a particular breed
 - [ ] __GET /temperament__:
-  - Obtiene todos los temperamentos posibles
+  - Brings back all temperaments availables
 - [ ] __POST /dog__:
-  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro y crea una raza de perro en la base de datos
+  - Create a new breed based on the data colected from the Form
  
-## Funcionamiento / How it works
-* Clonar este repositorio, / Clone this repository,
-* Realizar npm install en la carpeta Api y en la de Client, / Run npm install in folder Api and Client,
-* Ejecutar npm start en la carpeta Api y en la de Client, / Run npm start in both folders Api and Client,
-* Abrir http://localhost:3000 en el navegador. / Open http://localhost:3000 in your browser
+## How it works
+* Clone this repository,
+* Run **npm install** while you are in folder Api and Client,
+* Run **npm start** in both folders Api and Client,
+* Open http://localhost:3000 in your browser
