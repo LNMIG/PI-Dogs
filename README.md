@@ -30,13 +30,13 @@ __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO se usaron
   - GET https://api.thedogapi.com/v1/breeds
   - GET https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
 
-### Tecnologías empleadas:
+## Tecnologías empleadas:
 - [ ] React
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - PostgreSQL
 
-### Frontend
+## Frontend
 
 Se desarrolló una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 
@@ -75,7 +75,7 @@ __Ruta de creación de raza de perro__: contiene
 - [ ] Botón para crear una nueva raza de perro
 
  
-### Base de datos
+## Base de datos
 
 El modelo de la base de datos contiene las siguientes entidades:
 
@@ -90,7 +90,7 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Nombre
 
 
-### Backend
+## Backend
 
 Se desarrolló un servidor en Node/Express con las siguientes rutas:
 
@@ -107,6 +107,8 @@ Se desarrolló un servidor en Node/Express con las siguientes rutas:
 - [ ] __POST /dog__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro y crea una raza de perro en la base de datos
  
-### Funcionamiento / How it works
-Puedes clonar este repositorio y luego realizar npm install tanto en la sección Api como en la Client. Luego ejecuta npm start en ambas secciones.
-You can clone this repository and then run npm install in Api and Client sections. After that run npm start in both sections
+## Funcionamiento / How it works
+* Clonar este repositorio, / Clone this repository,
+* Realizar npm install en la carpeta Api y en la de Client, / Run npm install in folder Api and Client,
+* Ejecutar npm start en la carpeta Api y en la de Client, / Run npm start in both folders Api and Client,
+* Abrir http://localhost:3000 en el navegador. / Open http://localhost:3000 in your browser
