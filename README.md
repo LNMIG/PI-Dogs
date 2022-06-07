@@ -25,7 +25,7 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
 
 __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO se usaron los endpoints de la API externa, sino que los mismos fueron realizados desde el frontend y el backend.
 
-### Endpoints utilizados / Endpoints used
+## Endpoints utilizados / Endpoints used
 
   - GET https://api.thedogapi.com/v1/breeds
   - GET https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
