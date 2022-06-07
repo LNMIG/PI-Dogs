@@ -89,17 +89,17 @@ __Route for creating a new breed__: includes
  
 ## Backend
 
-A server was developed based in **Node/Express** including the following routes:
+A server was developed based in **Node / Express** including the following routes:
 
 - [ ] __GET /dogs__:
   - Brings back the list of all breeds
 - [ ] __GET /dogs?name="..."__:
   - Brings back a short list that includes the breeds that match with the name required by the user
-  - If no breed exist a message is shown
+  - If no breed exists a message is shown
 - [ ] __GET /dogs/{idBreed}__:
   - Brings back details of a particular breed
 - [ ] __GET /temperament__:
-  - Brings back all temperaments availables
+  - Brings back all temperaments available
 - [ ] __POST /dog__:
   - Create a new breed based on the data colected from the Form
  
