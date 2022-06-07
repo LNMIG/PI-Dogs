@@ -1,4 +1,4 @@
-# INDIVIDUAL PROJECT - performed at soyHenry's Bootcamp - Dogs Application
+# INDIVIDUAL PROJECT - done at soyHenry's Bootcamp - Dogs Application
 
 
 ## This is the Landing Page
