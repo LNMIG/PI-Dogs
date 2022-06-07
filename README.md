@@ -4,9 +4,8 @@
 
 # Individual Project - Henry Dogs
 
-<p align="left">
-  <img height="200" src="./dog.png" />
-</p>
+![2022-06-06 (5)](https://user-images.githubusercontent.com/96741070/172275241-434ff75b-91b8-488c-8887-1b45ed35a4dc.png)
+
 
 ## Objetivos del Proyecto / Project's Goals
 
@@ -26,22 +25,18 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
 
 __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO se usaron los endpoints de la API externa, sino que los mismos fueron realizados desde el frontend y el backend.
 
-### Únicos Endpoints/Flags que pueden utilizar / Endpoints or Flags allowed
+### Endpoints utilizados / Endpoints used
 
   - GET https://api.thedogapi.com/v1/breeds
   - GET https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
 
-### Requerimientos mínimos / Minimum requirements:
-
-__IMPORTANTE__: No se utilizaron librerías externas para aplicar estilos a la aplicación. Se empleó CSS puro y Less.
-
-#### Tecnologías empleadas:
+### Tecnologías empleadas:
 - [ ] React
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - PostgreSQL
 
-#### Frontend
+### Frontend
 
 Se desarrolló una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 
@@ -80,7 +75,7 @@ __Ruta de creación de raza de perro__: contiene
 - [ ] Botón para crear una nueva raza de perro
 
  
-#### Base de datos
+### Base de datos
 
 El modelo de la base de datos contiene las siguientes entidades:
 
@@ -95,7 +90,7 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Nombre
 
 
-#### Backend
+### Backend
 
 Se desarrolló un servidor en Node/Express con las siguientes rutas:
 
