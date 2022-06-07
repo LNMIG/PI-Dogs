@@ -85,7 +85,7 @@ __Route for creating a new breed__: includes
   - Weight
   - Life span
 - [ ] Selection of one or more temperaments
-- [ ] Cration Button
+- [ ] Creation Button
  
 ## Backend
 
