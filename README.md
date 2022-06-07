@@ -21,7 +21,7 @@
 * [Link to site](https://my-pi-dogs.vercel.app/)
 
 ## Project's Goals
-- Build an App using **React, Redux, Node y Sequelize - PostgreSQL**.
+- Build an App using **React, Redux, Node and Sequelize - PostgreSQL**.
 - Use and practice all concepts learned in the soyHENRY's Bootcamp.
 - Learn better **coding practices**.
 - Learn and practice **GIT's workflow**.
