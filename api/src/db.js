@@ -2,7 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT} = process.env;
+let { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT} = process.env;
 DB_USER = DB_USER || PGUSER
 DB_PASSWORD = DB_PASSWORD || PGPASSWORD
 DB_HOST = DB_HOST ||PGHOST
