@@ -10,7 +10,7 @@ function Landing() {
           <h2 className="question" >Whant to add info about your own puppy?</h2>
           <div className="tryus" >
             <h3> ~  </h3>
-              <div className="btn" > <NavLink className="btn-link" exact to="/home" >START</NavLink> </div>
+              <div className="btn" > <NavLink className="btn-link" to="/home" >START</NavLink> </div>
             <h3> ~ </h3>
           </div>
         </div>

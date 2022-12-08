@@ -3,11 +3,12 @@ let URL = process.env.REACT_APP_API || 'http://localhost:3001'
 export const getAllBreeds = () => {
     return async function (dispatch) {
         try {
-            const r = await fetch(`${URL}/dogs`, {
-                mode: 'no-cors',
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            });
+            const r = await fetch(`${URL}/dogs`)
+            //  , {
+            //      mode: 'cors',
+            //      method: 'GET',
+            //      headers: { 'Content-Type': 'application/json' },
+            //  });
             const json = await r.json();
             return dispatch({ type: "GET_ALL_BREEDS", payload: json });
         } catch (e) {
@@ -19,11 +20,13 @@ export const getAllBreeds = () => {
 export const getTemperaments = () => {
     return async function (dispatch) {
             try {
-                const r = await fetch(`${URL}/temperament`, {
-                  mode: 'no-cors',
-                  method: 'GET',
-                  headers: { 'Content-Type': 'application/json' },
-              });
+                const r = await fetch(`${URL}/temperament`)
+              //   , {
+              //     mode: 'no-cors',
+              //     method: 'GET',
+              //     headers: { 'Content-Type': 'application/json' },
+              // });
+                //console.log('Temperaments: ',r)
                 const json = await r.json();
                 return dispatch({ type: "GET_TEMPERS_LIST", payload: json });
             } catch (e) {
@@ -35,7 +38,7 @@ export const getTemperaments = () => {
 export const postNewBreed = (formData) => {
     return function (dispatch) {
         return fetch (`${URL}/dog`, {
-                mode: 'no-cors',
+                //mode: 'no-cors',
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {'Content-Type': 'application/json' }

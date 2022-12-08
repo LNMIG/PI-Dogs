@@ -5,6 +5,6 @@ export default function CommonBtn({idBreed, innerText, className}) {
     const action = innerText.toLowerCase();
 
     return (
-        <NavLink exact to={`/dog/${action}/${idBreed}/${action}`} className={className} >{innerText}</NavLink>
+        <NavLink to={`/dog/${action}/${idBreed}/${action}`} className={className} >{innerText}</NavLink>
     )
 }

@@ -4,7 +4,7 @@ const initialState = {
         temperslist:[]
 }
 
-function rootReducer (state = initialState, action) {
+function reducer (state = initialState, action) {
     switch (action.type) {
         case "GET_ALL_BREEDS":
             return {
@@ -25,4 +25,4 @@ function rootReducer (state = initialState, action) {
         return state;
     }
 }
-export default rootReducer;
+export default reducer;
