@@ -9,6 +9,7 @@ export const getAllBreeds = () => {
             //      method: 'GET',
             //      headers: { 'Content-Type': 'application/json' },
             //  });
+            console.log('Breeds: ',r)
             const json = await r.json();
             return dispatch({ type: "GET_ALL_BREEDS", payload: json });
         } catch (e) {
@@ -26,7 +27,7 @@ export const getTemperaments = () => {
               //     method: 'GET',
               //     headers: { 'Content-Type': 'application/json' },
               // });
-                //console.log('Temperaments: ',r)
+                console.log('Temperaments: ',r)
                 const json = await r.json();
                 return dispatch({ type: "GET_TEMPERS_LIST", payload: json });
             } catch (e) {
