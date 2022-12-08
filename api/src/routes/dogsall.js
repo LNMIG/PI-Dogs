@@ -1,6 +1,6 @@
 require('dotenv').config();
 const router = require('express').Router();
-// const fetch = require ('node-fetch');
+const fetch = require ('node-fetch');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 const { Breed, Temper } = require('../db.js');

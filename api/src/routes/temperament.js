@@ -1,5 +1,5 @@
 const router = require('express').Router();
-//const fetch = require ('node-fetch');
+const fetch = require ('node-fetch');
 const { Temper } = require('../db.js');
 const { API_KEY } = process.env;
 
