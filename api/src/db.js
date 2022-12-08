@@ -5,7 +5,7 @@ const path = require('path');
 let { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT} = process.env;
 DB_USER = DB_USER || PGUSER
 DB_PASSWORD = DB_PASSWORD || PGPASSWORD
-DB_HOST = DB_HOST ||PGHOST
+DB_HOST = DB_HOST || PGHOST
 DB_NAME = DB_NAME || PGDATABASE
 let sequelize = 
     process.env.NODE_ENV === "production"
